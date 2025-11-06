@@ -1,0 +1,224 @@
+.show6only, .show5only, .show4only, .show3only, .show2only{
+    display: none;
+}
+
+@media screen and (max-width: 1700px) {
+    .material_container .material_name{
+        font-size: 75%;
+    }
+
+    .doors_container .door_name, .rooms_container .room_name, .footer{
+        font-size: 85%;
+    }
+
+    .akcie span{
+        font-size: 85%;
+    }
+
+    h2{
+        font-size: 1.2em;
+    }
+
+    h1{
+        font-size: 1.85em;
+    }
+
+    .category_desc{
+        font-size: 19px;
+    }
+}
+
+@media screen and (max-width: 1550px) {
+    .left_side{
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .left_side{
+        width: 45%;
+    }
+
+    .left_side h1{
+        margin-bottom: 5px;
+    }
+
+    .category_desc{
+        font-size: 17px;
+        width: 65%;
+    }
+/*
+    .doors_container .door .door_img, .material_container .material, .rooms_container .room_img{
+        margin: 0 5px;
+    }*/
+
+}
+
+.show-1200{
+    visibility: hidden;
+    display: none;
+}
+@media screen and (max-width: 1300px) {
+    .show-1200{
+        visibility: visible;
+        display: initial;
+    }
+
+    .akcie .akcia{
+        width: 50%;
+        margin-bottom: 15px;
+    }
+
+    h1{
+        font-size: 1.75em;
+    }
+
+    .hide-1200{
+        visibility: hidden;
+        display: none;
+    }
+
+    .show7only{
+        display: none;
+    }
+    .show6only{
+        display: initial;
+    }
+
+    .doors_container .door, .material_container .item{
+        width: 16.6666%;
+    }
+
+    .category_desc{
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .show6only{
+        display: none;
+    }
+    .show5only{
+        display: initial;
+    }
+
+    .category_desc{
+        width: 75%;
+    }
+
+    .doors_container .door, .material_container .item{
+        width: 20%;
+    }
+
+    .doors_container, .material_container, .rooms_container{
+        padding: 20px;
+    }
+}
+
+@media only screen and (max-width: 950px) {
+    .show5only{
+        display: none;
+    }
+    .show4only{
+        display: initial;
+    }
+
+    .doors_container .door, .material_container .item{
+        width: 25%;
+    }
+
+    h1{
+        font-size: 1.7em;        
+    }
+
+    .category_desc{
+        display: none;
+    }
+
+    .doors_container, .material_container, .rooms_container{
+        padding: 15px;
+    }
+
+    .doors_container .door_name, .rooms_container .room_name{
+        font-size: 17px;
+    }
+
+    .akcia span{
+        font-size: 17px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    h1{
+        font-size: 1.6em;        
+    }
+
+    h2{
+        font-size: 100%;
+    }
+
+    .hide-780{
+        visibility: hidden;
+        display: none;
+    }
+
+    .show4only{
+        display: none;
+    }
+    .show3only{
+        display: initial;
+    }
+
+    .akcie .akcia{
+        width: 100%;
+    }
+
+    .akcia span{
+        font-size: 82%;
+    }
+
+    .doors_container .door_name, .rooms_container .room_name{
+        font-size: 82%;
+    }
+    
+    .rooms_container .room{
+        width: 100%;
+    }
+
+    .doors_container .door, .material_container .item{
+        width: 33.33%;
+    }
+    .doors_container, .material_container, .rooms_container{
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 520px){
+    h1{
+        font-size: 1.5em;        
+    }
+}
+
+@media only screen and (max-width: 490px){
+    
+    .show3only{
+        display: none;
+    }
+    .show2only{
+        display: initial;
+    }
+
+    .doors_container .door, .material_container .item{
+        width: 50%;
+    }
+}
+
+.mobile_under_door{
+	margin-top: 50px;
+}
+
+@media only screen and (orientation : landscape) {
+	.mobile_under_door {
+		top: 88% !important;
+	}
+}

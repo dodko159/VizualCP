@@ -1,0 +1,80 @@
+/* uprava stareho */
+.section_openclose_btn{
+    width: 4px;
+    height: 100%;
+    background-color: rgba(220, 185, 70, 1);
+}
+
+.section_openclose_btn:hover{
+    background-color: #CFAE41;
+}
+
+.openclose_btn_img{
+    top: 10%;
+}
+
+.arrow-right{
+    border-left: 18px solid #F3F3F3;
+}
+
+.arrow-left{
+    border-right: 18px solid #F3F3F3;
+}
+
+.moveRight {
+    transform: translateX(100%);
+    transform: translateX(100%) \0/IE9;
+    left: calc(0) \0/IE9;
+}
+
+.moveLeft {
+    transform: translateX(-100%);
+    transform: translateX(-100%) \0/IE9;
+    left: calc(0) \0/IE9;
+}
+
+.selection_container{
+    width: calc(50% - 17px);
+}
+
+/* novy prok */
+.openclose_btn_text_area{
+    top: 6%;
+    margin-left: -33px;
+    position: relative;
+    background-color: rgba(220, 185, 70, 1);
+    padding: 10px 7px 10px 5px;
+    width: 1.35em;
+
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+#room_section_openclose_btn .openclose_btn_text_area{
+    top: 38%;
+    margin-left: 0;
+    left: 33px;
+
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.openclose_btn_text_area:hover{
+    background-color: #CFAE41;
+}
+
+.section_openclose_btn:hover .openclose_btn_text_area{
+    background-color: #CFAE41;
+}
+
+.openclose_btn_text{
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1.35em;
+    color: #F3F3F3;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-weight: bold;
+}

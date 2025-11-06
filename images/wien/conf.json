@@ -1,0 +1,16 @@
+{
+	"typ":{
+		"L1":"L1 - Lišta&nbsp;1",
+		"L2":"L2 - Lišta&nbsp;2",
+		"K1":"K1 - Kazeta&nbsp;1",
+		"K2":"K1 - Kazeta&nbsp;2",
+		"O1":"O1 - Obložka&nbsp;1",
+		"O2":"O1 - Obložka&nbsp;2",
+		"S":"S - Sklo"
+	},
+	"ine":{
+		"klucka":"",
+		"zamok":"",
+		"panty":""
+	}
+}

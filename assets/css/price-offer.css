@@ -1,0 +1,343 @@
+#price-offer-wrapper{
+    z-index: 999999;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+    background-color: rgba(50,50,50,0.8);
+}
+
+#price-offer-window, #price-offer-add-item-window{
+    width: 800px;
+    height: 80%;
+    max-height: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    position: fixed;
+    padding: 25px;
+    background-color: rgb(240,240,240);
+    color: rgb(50,50,50);
+}
+
+#price-offer-add-item-window{
+    height: auto !important;
+    width: 300px !important;
+}
+
+#price-offer-wrapper .hide{
+    visibility: hidden;
+    display: none;
+}
+
+#price-offer-content{
+    width: inherit;
+    height: 100%;
+    overflow: auto;
+    position: absolute;
+}
+
+#price-offer-close-button, #price-offer-add-close-button{
+    position: absolute;
+    top: 9px;
+    right: 11px;
+    font-size: 1.5em;
+    color: #dfb947;
+    cursor: pointer;
+}
+
+#price-offer-wrapper h2{
+    margin-top: 0;
+}
+
+#price-offer-window h3{
+    display: inline-block;
+}
+
+.price-offer-line{
+    margin: 15px 0;
+
+    text-align: right;
+}
+
+.price-offer-line i {
+    width: 5%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+#price-offer-wrapper .checkbox{
+    width: 17px;
+    height: 17px;
+}
+
+#price-offer-wrapper .checkbox-label{
+    font-size: 1.2em;
+}
+
+.price-offer-item-price {
+    float: right;
+    color: rgb(220, 185, 70);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#price-offer-wrapper input, #price-offer-wrapper textarea{
+    padding: 5px;
+    font-size: 1.1em;
+    border: 1px solid #5E5E5E;
+    border-radius: 3px;
+}
+
+#price-offer-wrapper input:focus, #price-offer-wrapper textarea:focus{
+    outline-color: rgb(220, 185, 70);
+    border: 1px solid rgb(220, 185, 70);
+}
+
+#price-offer-wrapper input.invalid-value{
+    outline-color: rgb(220, 70, 70);
+    border: 1px solid rgb(220, 70, 70);
+}
+
+.price-offer-message{
+    color: rgb(220, 70, 70);
+    font-weight: bold;
+    margin-left: 15px;
+}
+
+.success-message{
+    color: rgb(70, 220, 82);
+}
+
+.price-offer-message.hide{
+    display: none;
+}
+
+.price-offer-line input {
+    width: 92%;
+    right: 0;
+}
+
+#price-offer-wrapper input[type=number]::-webkit-inner-spin-button, 
+#price-offer-wrapper input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+/* #price-offer-note{
+    width: 100%;
+    margin-top: 5px;
+    resize: vertical;
+} */
+
+#price-offer-wrapper input[type=submit], .button {
+    background-color: rgba(220, 185, 70, 1);;
+    color: #F3F3F3;
+    border-radius: 10px;
+    border: 0;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.button a {
+    text-decoration: none;
+}
+
+#price-offer-add-item-window textarea{
+    resize: vertical;
+    font-size: 1.2em;
+    height: auto;
+    overflow: hidden;
+}
+
+.text-left{
+    text-align: left;
+}
+
+.g-recaptcha{
+    margin-bottom: 15px;
+}
+
+.g-recaptcha div{
+    margin: 0 auto;
+}
+
+#po_link_add, #po_link{
+    /*margin-top: 15px;*/
+    float: none;
+    left: 0;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 10px;
+    border: 0;
+    padding: 8px 12px;
+
+    -o-transition:margin 0.8s ease-in-out;
+    -webkit-transition:margin 0.8s ease-in-out;
+    -moz-transition:margin 0.8s ease-in-out;
+    transition: margin 0.8s ease-in-out;
+
+    background-color: rgba(220, 185, 70, 1);
+    color: #F3F3F3;
+    font-size: 1.1em;
+}
+
+#po_link{
+    margin-left: 10px;
+}
+
+#under_door_buttons{
+    margin-top: 10px;
+}
+
+.price-offer-remove-item {
+    position: absolute;
+    font-size: 1.5em;
+    color: rgb(220, 70, 70);
+    cursor: pointer;
+    margin: 6px 0 0 8px;
+}
+
+.fa-button {
+    background-color: rgba(220, 185, 70, 1);
+    color: #F3F3F3;
+    border-radius: 5px;
+    padding: 7px 8px;
+    cursor: pointer;
+}
+
+.fa-clone {
+    padding: 10px 10px;
+}
+
+.fa-text{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 7px;
+}
+
+.price-offer-line-item{
+    margin-bottom: 15px;
+}
+
+.price-offer-line-item .door{
+    margin-right: 20px;
+    float: left;
+}
+
+.price-offer-line-item .door img{
+    height: 250px;
+    position: absolute;
+}
+
+.rel {
+    position: relative !important;
+}
+
+.price-offer-line-content {
+    display: inline-block;
+    width: 80%;
+}
+
+.price-offer-line-content h4{
+    display: inline-block;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
+#price-offer-add-item-window h4 {
+    display: inline-block;
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.price-offer-line-info-text {
+    margin-left: 15px;
+}
+
+.price-offer-width {
+    margin-left: 15px;
+    padding: 3px 1px;
+    font-size: 1.1em;
+    border-radius: 3px;
+}
+
+.price-offer-width:focus-visible {
+    outline-color: rgb(220, 185, 70);
+    border-color: rgba(220, 185, 70, 1);
+    border-radius: 3px;
+}
+
+.price-offer-count {
+    width: 50px;
+}
+
+.price-offer-info, #price-offer-wrapper textarea {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.price-offer-full-price {
+    color: rgb(220, 185, 70);
+    font-weight: bold;
+    font-size: 1.9em;
+    margin-right: 20px;
+}
+
+#priceOfferAddForm {
+    margin-block-end: 0;
+}
+
+/* ------------ mobilne -------------- */
+@media screen and (max-width: 900px){
+    #price-offer-window{
+        width: 90%;
+        padding-left: 3%;
+        padding-right: 3%;
+    }
+}
+@media screen and (max-height: 520px){
+    #price-offer-window{
+        padding-top: 3%;
+        padding-bottom: 3%;
+    }
+}
+@media screen and (max-width: 900px), screen and (max-height: 520px){
+    #price-offer-window .price-offer-line i{
+        font-size: 1em;
+        margin-top: 4px;
+        position: absolute;
+        margin-left: -6%;
+    }
+
+    #price-offer-window .price-offer-line{
+        margin: 10px 0;
+    }
+
+    #price-offer-window h2{
+        margin-bottom: 5px;
+    }
+
+    #price-offer-wrapper input, #price-offer-wrapper textarea{
+        font-size: 13px;
+        padding: 4px;
+    }
+
+    #price-offer-window input[type=submit]{
+        font-size: 1.1em;
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+
+    #price-offer-window form{
+        margin-bottom: 10px;
+    }
+
+    #price-offer-window #price-offer-req-text{
+        font-size: 0.9em;
+    }
+}

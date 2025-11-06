@@ -1,0 +1,336 @@
+/* selected material effect */
+.sel .material::before{
+    content: '';
+    background-image: url('../img/pushed.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.desel .material::before{
+    content: '';
+    background-image: url('../img/mat-for.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.item{
+    width: 12.5%;
+    height: auto;
+}
+
+.table{
+    display: table;
+    width: 100%;
+}
+
+.content_container{
+    height: 100vh;
+    width: 100%;
+    /*padding: 1.5vh 1%;*/
+    overflow: hidden;
+}
+
+#canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    display: none;
+}
+
+#content_back{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: 90%;
+}
+
+#full_screen_btn{
+    width: 25px;
+    height: 25px;
+    background-color: darkslategray;
+    position: absolute;
+    z-index: 99999;
+    display: none;
+}
+
+/* leftside */
+
+.left_side{
+    width: 35%;
+    height: 98vh;
+    position: absolute;
+    float: left;
+    margin-left: -1%;
+    margin-right: 1%;
+
+    -o-transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.disappear{
+    opacity: 0;
+}
+
+.head_of_category h1{
+    padding: 1.5vh;
+    padding-left: calc(3.5vh + 25px);
+    /*background-color: rgba(255, 255, 255, 0.40);*/
+    color: #f6f6f6;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.category_desc{
+    padding-left: calc(3.5vh + 25px);
+    font-size: 20px;
+    color: #f6f6f6;
+}
+
+.left_side .category_title_name{
+    text-transform: uppercase;
+}
+
+.selected_door_container{
+    width: 25vh;
+    position: relative;
+    left: 125px;
+    top: 80px;
+
+    display: none;
+}
+
+.selected_door_comb .selected img{
+    position: absolute;
+}
+/*
+.selected_door_comb .selected{
+    display: none;
+}*/
+
+.under_door{
+    position: absolute;
+    color: #f1f1f1;
+    font-size: 19px;
+    top: 88%;
+    left: 7.5%;
+}
+
+.under_door .price_container{
+    text-transform: uppercase;
+    font-size: 25px;
+    white-space: nowrap !important;
+}
+
+.under_door #under_door_desc{
+    white-space: nowrap !important;
+}
+
+/* selection */
+
+.selection_container{
+    width: 50%;
+    position: relative;
+    height: 100%;
+    background-color: rgba(241, 241, 241, 0.8);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.selection_content{
+    backdrop-filter: blur(3px);
+    /*padding-bottom: 25px;*/
+}
+
+.selection_content h2{
+    margin: 0 0 10px 0;
+    color: #555;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.selection_content h2 a, .selection_content h2 a:hover, .selection_content h2 a:visited{
+    color: #555;
+}
+
+.selection_content h2 a:hover{
+    color: #555;
+}
+
+/* floor and room selection */
+
+.room_selection_container{ 
+    float: left;
+    right: 0px;
+
+    -o-transition:all 0.8s linear;
+    -webkit-transition:all 0.8s linear;
+    -moz-transition:all 0.8s linear;
+    transition: all 0.8s linear;
+}
+
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0)
+and (min-resolution:.001dpcm) {
+    .room_selection_container .section_openclose_btn{
+        margin-right: -12px;
+    }
+}
+*/
+.room_selection_container .selection_content{
+    padding-right: 25px;
+}
+
+/* material and door selection */
+
+.door_selection_container{ 
+    float: right;
+    right: 0px;
+
+    -o-transition:all 0.8s linear;
+    -webkit-transition:all 0.8s linear;
+    -moz-transition:all 0.8s linear;
+    transition: all 0.8s linear;
+}
+
+.door_selection_container .selection_content{
+    padding-left: 25px;
+}
+
+.doors_container, .material_container, .rooms_container, .categories_container, .akcie{
+    padding: 10px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important; 
+}
+
+.doors_container{
+    padding-top: 15px !important;
+}
+
+.doors_container .door, .material_container .item{
+    width: 14.28%;
+    float: left;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.rooms_container .room{
+    width: 50%;
+    float: left;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.doors_container .door .door_img, .material_container .material, .rooms_container .room_img{
+    margin: 0 1px;
+    position: relative;
+    display: block;
+}
+
+.doors_container .door img, .material_container .material_img, .rooms_container .room img{
+    width: 100%;
+    height: auto;
+}
+
+.doors_container .door_name, .material_container .material_name, .rooms_container .room_name{
+    text-transform: uppercase;
+    font-size: 19px;
+    margin-top: 5px;
+    display: inline-block;
+}
+
+.material .material_info {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: #555;
+    font-size: 19px;
+}
+
+#handle_types .material{
+    background-color: rgba(221, 221, 221, 0.65);
+}
+
+#right_categories{
+    padding-top: 0px !important;
+}
+
+/*
+#floor_materials .material_name{
+    margin-left: -25px;
+}*/
+
+.akcia{
+    width: 33.333%;
+    float: left;
+}
+
+.akcia .akcia_img{
+    padding: 2px;
+}
+
+.akcia img{
+    width: 100%;
+    height: auto;
+}
+
+.akcia span{
+    margin: 0 15px;
+    display: inline-block;
+    text-align: justify;
+    font-size: 19px;
+}
+
+.akcia .akcia_title{
+    margin: 15px;
+    text-align: center;
+}
+
+.material_container a.desel .material::before, #glass_types .material::before,
+.doors_container a.desel .door_img::before, .rooms_container a .room_img::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    -o-transition: background-color 0.2s ease-in-out;
+    -webkit-transition: background-color 0.2s ease-in-out;
+    -moz-transition: background-color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
+}
+.material_container a.desel .material:hover::before, #glass_types .material:hover::before,
+.doors_container a.desel .door_img:hover::before, .rooms_container a .room_img:hover::before{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* move */
+
+.moveRight{
+    transform: translateX(calc(100% - 25px));
+    transform:translateX(100%) \0/IE9;  /* IE9 hack */
+    left: calc(-25px) \0/IE9;
+}
+@supports (-ms-ime-align:auto) {
+    .moveRight {
+        left: 0;
+    }
+}
+
+.moveLeft{
+    transform: translateX(calc(-100% + 25px));
+    transform:translateX(-100%) \0/IE9;  /* IE9 hack */
+    left: calc(25px) \0/IE9;
+}
+@supports (-ms-ime-align:auto) {
+    .moveLeft {
+        left: 0;
+    }
+}

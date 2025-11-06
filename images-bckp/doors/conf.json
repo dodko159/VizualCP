@@ -1,0 +1,37 @@
+{
+    "7":{
+        "name":"Najpre&shy;dá&shy;va&shy;nejšie",
+        "type":"v1",
+        "material": 10
+    },
+    "6":{
+        "name":"Alica",
+        "type":"a12",
+        "material": 11
+    },
+    "3":{
+        "name":"Kristina",
+        "type":"k8",
+        "material": 9
+    },
+    "1":{
+        "name":"Renata",
+        "type":"r5",
+        "material": 13
+    },
+    "4":{
+        "name":"Petra",
+        "type":"p10",
+        "material": 9
+    },
+    "2":{
+        "name":"Vanesa",
+        "type":"v3",
+        "material": 4
+    },
+    "5":{
+        "name":"Zuzana",
+        "type":"z3",
+        "material": 12
+    }
+}

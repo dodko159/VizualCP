@@ -1,0 +1,33 @@
+{
+    "Druhy laminátov":{
+        "lamino-biela":"Biela",
+        "lamino-seda":"Seda",
+        "lamino-pinia-korzika":"Pinia korzika",
+        "lamino-buk":"Buk",
+        "lamino-chamonix":"Chamonix",
+        "JASEN-PIESOCNY":"Jaseň piesočný",
+        "KREM":"Krém",
+        "lamino-javor":"Javor",
+        "lamino-javor-kralovsky":"Javor kralovsky",
+        "lamino-jelsa":"Jelsa",
+        "DUB-HALIFAX":"Dub halifax",
+        "DUB-HALIFAX-TABAKOVY":"Dub halifax tabakový",
+        "DUB-BARDOLINO":"Dub bardolino",
+        "DUB-HAMILTON":"Dub hamilton",
+        "DUB-KRONGERG":"Dub krongerg",
+        "DUB-WOTAN":"Dub wotan",
+		"canyon-dark":"Canyon tmavý",
+		"canyon-light":"Canyon bledý",
+		"gardena":"Gardena",
+        "ORECH":"Orech",
+        "ANTRACIT":"Antracit"
+    },
+    "Druhy dýh":{
+        "buk":"Buk",
+        "dub":"Dub",
+        "javor":"Javor",
+        "macore":"Macore",
+        "mahagon":"Mahagon",
+        "smrek":"Smrek"
+    }
+}
