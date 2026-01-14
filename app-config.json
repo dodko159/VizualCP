@@ -1,5 +1,5 @@
 {
-  "profile": "DEV",
+  "profile": "STAGE",
   "PROD": {
     "dbFilename": "db.sqlite",
     "isProductionSmtp": true,
