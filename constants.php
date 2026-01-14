@@ -26,7 +26,6 @@ $addToCP = "Pridať do CP";
 $cena_zarubne = 93;
 $cena_zarubne_akcia = 79;
 $cena_montaze = 25;
-$cena_DTD = 0;
 $cena_tesnenia = 7;
 $cena_tmelenia = 6;
 $cena_obkladu_zarubne = 25;

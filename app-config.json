@@ -1,0 +1,48 @@
+{
+  "profile": "DEV",
+  "PROD": {
+    "dbFilename": "db.sqlite",
+    "isProductionSmtp": true,
+    "isProductionVue": true,
+    "mailCc": "stolarstvo.sucansky@gmail.com",
+    "mailFrom": "stolarstvo.sucansky@gmail.com",
+    "mailFromName": "Stolárstvo Sučanský",
+    "mailSmtpDebugMode": false,
+    "mailSmtpHost": "smtp.gmail.com",
+    "mailSmtpUsername": "janicekd0@gmail.com",
+    "mailSmtpPassword": "kvyj wbne nlkj hsxk",
+    "reCaptchaEnabled": true,
+    "reCaptchaSecretKey": "6Ld5jQMrAAAAAFTSKLPKeyT3nrmc6jga1bbN8lqd",
+    "reCaptchaSiteKey": "6Ld5jQMrAAAAAEgMhJDxVkJ7Du5Zpw62pBzUL4wl"
+  },
+  "STAGE": {
+    "dbFilename": "db.sqlite",
+    "isProductionSmtp": true,
+    "isProductionVue": true,
+    "mailCc": "sucansky.peto@gmail.com",
+    "mailFrom": "sucansky.peto@gmail.com",
+    "mailFromName": "Stolárstvo Sučanský",
+    "mailSmtpDebugMode": false,
+    "mailSmtpHost": "smtp.gmail.com",
+    "mailSmtpUsername": "janicekd0@gmail.com",
+    "mailSmtpPassword": "kvyj wbne nlkj hsxk",
+    "reCaptchaEnabled": true,
+    "reCaptchaSecretKey": "6Ld5jQMrAAAAAFTSKLPKeyT3nrmc6jga1bbN8lqd",
+    "reCaptchaSiteKey": "6Ld5jQMrAAAAAEgMhJDxVkJ7Du5Zpw62pBzUL4wl"
+  },
+  "DEV": {
+    "dbFilename": "/Users/peterhutas/Desktop/db/db.sqlite",
+    "isProductionSmtp": false,
+    "isProductionVue": false,
+    "mailCc": "peter.hutasrs@gmail.com",
+    "mailFrom": "peter.hutasrs@gmail.com",
+    "mailFromName": "Stolárstvo Sučanský",
+    "mailSmtpDebugMode": false,
+    "mailSmtpHost": "smtp.gmail.com",
+    "mailSmtpUsername": "janicekd0@gmail.com",
+    "mailSmtpPassword": "kvyj wbne nlkj hsxk",
+    "reCaptchaEnabled": true,
+    "reCaptchaSecretKey": "6Ldc_T0sAAAAAMSv0bV-KK0M2d6rP3kPmsDHbsp-",
+    "reCaptchaSiteKey": "6Ldc_T0sAAAAACAxl6Rfk01Nji00Fqfpi1WK3YmM"
+  }
+}

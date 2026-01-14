@@ -9,18 +9,18 @@ var leftSectionOpen = true;
 function changeDoor(obj){
     var id = '#selected_door';
     var path = changeImgSrc(obj, id);
-    $(id).attr('src', path + ".png");
+    window.jQuery(id).attr('src', path + ".png");
     //console.log(nameFromPath(path));
-    $.post("add-session-val.php", {'doorType':nameFromPath(path)});
+    window.jQuery.post("add-session-val.php", {'doorType':nameFromPath(path)});
     //sendSessionValues({'doorType':nameFromPath(path)});
 }
 
 function changeMaterial(obj){
     var id = '#selected_material';
     var path = changeImgSrc(obj, id);
-    $(id).attr('src', path + ".png");
+    window.jQuery(id).attr('src', path + ".png");
     //console.log(nameFromPath(path));
-    $.post("add-session-val.php", {'material':nameFromPath(path)});
+    window.jQuery.post("add-session-val.php", {'material':nameFromPath(path)});
     //sendSessionValues({'material' : nameFromPath(path)});
 }
 
@@ -46,29 +46,29 @@ function changeFloor(obj){
     var image_url = changeImgSrc(obj, id) + ".png";
 
     if(doesFileExist(image_url)){
-        $(id).attr('src', image_url);
+        window.jQuery(id).attr('src', image_url);
     }else{
         var adr = image_url.split("/");
         adr = adr.splice(0,adr.length-1);
-        $(id).attr('src', adr.join("/") + "/" + defFloor + ".png");
+        window.jQuery(id).attr('src', adr.join("/") + "/" + defFloor + ".png");
     }
 }
 
 function changeHandle(obj){
     var id = '#selected_handle';
-    $(id).attr('src', changeImgSrc(obj, id) + ".png");
+    window.jQuery(id).attr('src', changeImgSrc(obj, id) + ".png");
 }
 
 function changeRoom(obj){
     var id = '#selected_room';
-    $(id).attr('src', changeImgSrc(obj, id) + ".png");
+    window.jQuery(id).attr('src', changeImgSrc(obj, id) + ".png");
 }
 
 function changeImgSrc(obj, id){
-    var src = $(id).attr('src');
+    var src = window.jQuery(id).attr('src');
     var adr = src.split("/");
     adr = adr.splice(0,adr.length-1);
-    var nameList = $(obj).attr('id').split("_");
+    var nameList = window.jQuery(obj).attr('id').split("_");
     nameList.shift();
     var name = nameList.join("_");
     var newAdr = adr.join("/") + "/" + name;
@@ -80,19 +80,19 @@ function changeImgSrc(obj, id){
 function hideLeftIfAllShown(){
     if(leftSectionOpen){
         setTimeout(function(){
-            $('#room_section_openclose_btn').click(); 
+            window.jQuery('#room_section_openclose_btn').click();
         }, 500);
     }
 }
 
 function generateCanvas(){
 
-    var materialSrc = $('#selected_material').attr('src');
-    var doorSrc = $('#selected_door').attr('src');
-    var roomSrc = $('#selected_room').attr('src');
+    var materialSrc = window.jQuery('#selected_material').attr('src');
+    var doorSrc = window.jQuery('#selected_door').attr('src');
+    var roomSrc = window.jQuery('#selected_room').attr('src');
     var doorFrameSrc = "./images/zarubna.png";
-    var handleSrc = $('#selected_handle').attr('src');
-    var floorSrc = $('#selected_floor').attr('src');
+    var handleSrc = window.jQuery('#selected_handle').attr('src');
+    var floorSrc = window.jQuery('#selected_floor').attr('src');
 
     var c=document.getElementById("canvas");
     var ctx=c.getContext("2d");
@@ -108,7 +108,7 @@ function generateCanvas(){
         isWienLoc = isWien;
     }
 
-    $('#loading').removeClass('hide');
+    window.jQuery('#loading').removeClass('hide');
     hideLeftIfAllShown();
 
     floor.src = floorSrc;
@@ -138,7 +138,7 @@ function generateCanvas(){
                             
                             myElement.style.backgroundImage = 'url('+data+')';
             
-                            $('#loading').addClass('hide');
+                            window.jQuery('#loading').addClass('hide');
                         }                   
                     }
                 }
@@ -148,34 +148,34 @@ function generateCanvas(){
 }
 
 function updateCanvasSize(){
-    $("#content_back").attr("width", document.body.clientWidth);
-    $("#content_back").attr("height", document.body.clientHeight);
+    window.jQuery("#content_back").attr("width", document.body.clientWidth);
+    window.jQuery("#content_back").attr("height", document.body.clientHeight);
 }
 
 // door selection clicked - door
-    $(document).ready(function(){
-        $("#doors .door a").click(function(){
-            if($(this).attr('class')=="desel") {
-                $("#doors .door a").attr('class', 'desel');
-                $(this).attr('class', 'sel');
+    window.jQuery(document).ready(function(){
+        window.jQuery("#doors .door a").click(function(){
+            if(window.jQuery(this).attr('class')=="desel") {
+                window.jQuery("#doors .door a").attr('class', 'desel');
+                window.jQuery(this).attr('class', 'sel');
                 changeDoor(this);
                 generateCanvas();
                 //price
-                var nameList = $(this).attr('id').split("_");
+                var nameList = window.jQuery(this).attr('id').split("_");
                 nameList.shift();
                 var name = nameList.join("_");
-                $(".price_container span").attr('class', 'desel');
-                $("#price_" + name).attr('class', 'sel');
+                window.jQuery(".price_container span").attr('class', 'desel');
+                window.jQuery("#price_" + name).attr('class', 'sel');
             }
         });
     });
 
 // door selection clicked - material
-    $(document).ready(function(){
-        $("#door_materials .item a").click(function(){
-            if($(this).attr('class')=="desel") {
-                $("#door_materials .item a").attr('class', 'desel');
-                $(this).attr('class', 'sel');
+    window.jQuery(document).ready(function(){
+        window.jQuery("#door_materials .item a").click(function(){
+            if(window.jQuery(this).attr('class')=="desel") {
+                window.jQuery("#door_materials .item a").attr('class', 'desel');
+                window.jQuery(this).attr('class', 'sel');
                 changeMaterial(this);
                 if(checkIsDefaultFloor()){
                     changeFloor(this);
@@ -186,11 +186,11 @@ function updateCanvasSize(){
     });
 
 // door selection clicked - handle
-$(document).ready(function(){
-    $("#handle_types .item a").click(function(){
-        if($(this).attr('class')=="desel") {
-            $("#handle_types .item a").attr('class', 'desel');
-            $(this).attr('class', 'sel');
+window.jQuery(document).ready(function(){
+    window.jQuery("#handle_types .item a").click(function(){
+        if(window.jQuery(this).attr('class')=="desel") {
+            window.jQuery("#handle_types .item a").attr('class', 'desel');
+            window.jQuery(this).attr('class', 'sel');
             changeHandle(this);
             generateCanvas();
         }
@@ -198,19 +198,19 @@ $(document).ready(function(){
 });
 
 // room selection clicked - category
-$(document).ready(function(){
-    $(".categories a").click(function(){
-        var id = $(".room .sel").attr('id').split('_')[1];
-        $(this).attr('href', this.href + "&room=" + id);
+window.jQuery(document).ready(function(){
+    window.jQuery(".categories a").click(function(){
+        var id = window.jQuery(".room .sel").attr('id').split('_')[1];
+        window.jQuery(this).attr('href', this.href + "&room=" + id);
     });
 });
 
 // room selection clicked - room
-$(document).ready(function(){
-    $(".rooms_container .room a").click(function(){
-        if($(this).attr('class')=="desel") {
-            $(".rooms_container .room a").attr('class', 'desel');
-            $(this).attr('class', 'sel');
+window.jQuery(document).ready(function(){
+    window.jQuery(".rooms_container .room a").click(function(){
+        if(window.jQuery(this).attr('class')=="desel") {
+            window.jQuery(".rooms_container .room a").attr('class', 'desel');
+            window.jQuery(this).attr('class', 'sel');
             changeRoom(this);
             generateCanvas();
         }
@@ -218,19 +218,19 @@ $(document).ready(function(){
 });
 
 function checkIsDefaultFloor(){
-    var isDefaultFloor = $("#floor_materials .item .sel").attr('id')=="floor_default";
+    var isDefaultFloor = window.jQuery("#floor_materials .item .sel").attr('id')=="floor_default";
     return isDefaultFloor;
 }
 
 // room selection clicked - floor
-$(document).ready(function(){
-    $("#floor_materials .item a").click(function(){
-        if($(this).attr('class')=="desel") {
-            $("#floor_materials .item a").attr('class', 'desel');
-            $(this).attr('class', 'sel');
-            var id = $(this).attr('id');
+window.jQuery(document).ready(function(){
+    window.jQuery("#floor_materials .item a").click(function(){
+        if(window.jQuery(this).attr('class')=="desel") {
+            window.jQuery("#floor_materials .item a").attr('class', 'desel');
+            window.jQuery(this).attr('class', 'sel');
+            var id = window.jQuery(this).attr('id');
             if(checkIsDefaultFloor()){
-                changeFloor($("#door_materials .item .sel"));
+                changeFloor(window.jQuery("#door_materials .item .sel"));
             }else{
                 changeFloor(this);
             }
@@ -249,12 +249,12 @@ function hideLeftSide(leftSide){
     }
 }
 
-$(document).ready(function(){
-    var leftSide = $(".left_side"),
-    doorSection = $(".door_selection_container.selection_container"),
-    doorBtn = $("#door_section_openclose_btn .openclose_btn_img"),
-    roomSection = $(".room_selection_container.selection_container"),
-    roomBtn = $("#room_section_openclose_btn .openclose_btn_img");
+window.jQuery(document).ready(function(){
+    var leftSide = window.jQuery(".left_side"),
+    doorSection = window.jQuery(".door_selection_container.selection_container"),
+    doorBtn = window.jQuery("#door_section_openclose_btn .openclose_btn_img"),
+    roomSection = window.jQuery(".room_selection_container.selection_container"),
+    roomBtn = window.jQuery("#room_section_openclose_btn .openclose_btn_img");
 
     function moveLeft(){
         roomSection.toggleClass('moveLeft');
@@ -309,33 +309,35 @@ $(document).ready(function(){
         }, 450)  
     }
 
-    $("#door_section_openclose_btn").click(function(){
+    window.jQuery(".openclose_btn_text_area_move_right").click(function(){
         moveRight();
     });
 
-    $("#room_section_openclose_btn").click(function(){
+    window.jQuery("#room_section_openclose_btn").click(function(){
         moveLeft();
     });
 
     //swipe right
-    $(".door_selection_container").swipe( {
+    window.jQuery(".door_selection_container").swipe( {
         swipeRight:function(event, direction, distance, duration, fingerCount) {
             if(rightSectionOpen){
                 moveRight();
             }
-        }
+        },
+        excludedElements: "a, i, input, option, select, textarea"
     });
     //swipe left
-    $(".door_selection_container").swipe( {
+    window.jQuery(".door_selection_container").swipe( {
         swipeLeft:function(event, direction, distance, duration, fingerCount) {
             if(!rightSectionOpen){
                 moveRight();
             }
-        }
+        },
+        excludedElements: "a, i, input, option, select, textarea"
     });
 
     //swipe left
-    $(".room_selection_container").swipe( {
+    window.jQuery(".room_selection_container").swipe( {
         swipeLeft:function(event, direction, distance, duration, fingerCount) {
             if(leftSectionOpen){
                 moveLeft();
@@ -343,7 +345,7 @@ $(document).ready(function(){
         }
     });
     //swipe right
-    $(".room_selection_container").swipe( {
+    window.jQuery(".room_selection_container").swipe( {
         swipeRight:function(event, direction, distance, duration, fingerCount) {
             if(!leftSectionOpen){
                 moveLeft();
@@ -351,9 +353,9 @@ $(document).ready(function(){
         }
     });
 
-    $(".selection_container").scroll(function(){
-        var fromTop = $(this).scrollTop();
-        var btn = $(this).find(".section_openclose_btn");
+    window.jQuery(".selection_container").scroll(function(){
+        var fromTop = window.jQuery(this).scrollTop();
+        var btn = window.jQuery(this).find(".section_openclose_btn");
         var id = btn.attr('id').split('_')[0];
         
         if(id=="room" && !leftSectionOpen){
@@ -369,8 +371,8 @@ $(document).ready(function(){
 
 //under-door text position
 function updateTextAndLoadingPosition(){
-    var underDoorElement = $('#under_door');
-    var loadingElement = $('#loading .loading_img');
+    var underDoorElement = window.jQuery('#under_door');
+    var loadingElement = window.jQuery('#loading .loading_img');
 
     var windowHeight = document.body.clientHeight;
     var windowWidth = document.body.clientWidth;
@@ -404,17 +406,16 @@ function updateTextAndLoadingPosition(){
     }
 
     fitty('.under_door .price_container',{
-        minSize: 14   
+        minSize: 14
     });
     fitty('#under_door_desc',{
-        minSize: 11   
+        minSize: 11
     });
-    
 }
 
 function showAPNGIfPossible(){
     if(supportAPNG()){
-        var element = $("#loading img");
+        var element = window.jQuery("#loading img");
         var src = element.attr('src').split('.');
         var newSrc = src.splice(0,src.length-1).join(".") + ".png";
         element.attr('src', newSrc);
@@ -423,22 +424,22 @@ function showAPNGIfPossible(){
 
 //on load
 
-$(document).ready(function(){
+window.jQuery(document).ready(function(){
     showMobileAlert();
 
     showAPNGIfPossible();
 
-    hideDuration = parseFloat($('.selection_container').css('transition-duration'))*1000;
+    hideDuration = parseFloat(window.jQuery('.selection_container').css('transition-duration'))*1000;
 
     updateTextAndLoadingPosition();
 
     if(checkIsDefaultFloor()){
-        changeFloor($("#door_materials .item .sel"));
+        changeFloor(window.jQuery("#door_materials .item .sel"));
     }
     generateCanvas();
     updateCanvasSize();
 
-    $("textarea").on("input", function () {
+    window.jQuery("textarea").on("input", function () {
         this.style.height = "auto";
         this.style.height = (this.scrollHeight+2) + "px";
     });
@@ -446,7 +447,7 @@ $(document).ready(function(){
 
 //on resize
 
-$(window).resize(function() {
+window.jQuery(window).resize(function() {
     updateCanvasSize();
     updateTextAndLoadingPosition();
 });

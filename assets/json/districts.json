@@ -1,0 +1,357 @@
+[
+  {
+    "id": "own-transport",
+    "label": "Vlastný odber Čachtice",
+    "distance": 0
+  },
+  {
+    "id": "banovce-nad-bebravou",
+    "label": "Bánovce nad Bebravou",
+    "distance": 60
+  },
+  {
+    "id": "banska-bystrica",
+    "label": "Banská Bystrica",
+    "distance": 214
+  },
+  {
+    "id": "banska-stiavnica",
+    "label": "Banská Štiavnica",
+    "distance": 176
+  },
+  {
+    "id": "bardejov",
+    "label": "Bardejov",
+    "distance": 363
+  },
+  {
+    "id": "bratislava",
+    "label": "Bratislava",
+    "distance": 99
+  },
+  {
+    "id": "brezno",
+    "label": "Brezno",
+    "distance": 256
+  },
+  {
+    "id": "bytca",
+    "label": "Bytča",
+    "distance": 89
+  },
+  {
+    "id": "cadca",
+    "label": "Čadca",
+    "distance": 132
+  },
+  {
+    "id": "detva",
+    "label": "Detva",
+    "distance": 222
+  },
+  {
+    "id": "dolny-kubin",
+    "label": "Dolný Kubín",
+    "distance": 167
+  },
+  {
+    "id": "dunajska-streda",
+    "label": "Dunajská Streda",
+    "distance": 105
+  },
+  {
+    "id": "galanta",
+    "label": "Galanta",
+    "distance": 74
+  },
+  {
+    "id": "gelnica",
+    "label": "Gelnica",
+    "distance": 317
+  },
+  {
+    "id": "hlohovec",
+    "label": "Hlohovec",
+    "distance": 42
+  },
+  {
+    "id": "humenne",
+    "label": "Humenné",
+    "distance": 392
+  },
+  {
+    "id": "ilava",
+    "label": "Ilava",
+    "distance": 51
+  },
+  {
+    "id": "kezmarok",
+    "label": "Kežmarok",
+    "distance": 258
+  },
+  {
+    "id": "komarno",
+    "label": "Komárno",
+    "distance": 141
+  },
+  {
+    "id": "kosice",
+    "label": "Košice",
+    "distance": 355
+  },
+  {
+    "id": "krupina",
+    "label": "Krupina",
+    "distance": 223
+  },
+  {
+    "id": "kysucke-nove-mesto",
+    "label": "Kysucké Nové Mesto",
+    "distance": 112
+  },
+  {
+    "id": "levice",
+    "label": "Levice",
+    "distance": 150
+  },
+  {
+    "id": "levoca",
+    "label": "Levoča",
+    "distance": 271
+  },
+  {
+    "id": "liptovsky-mikulas",
+    "label": "Liptovský Mikuláš",
+    "distance": 193
+  },
+  {
+    "id": "lucenec",
+    "label": "Lučenec",
+    "distance": 254
+  },
+  {
+    "id": "malacky",
+    "label": "Malacky",
+    "distance": 81
+  },
+  {
+    "id": "martin",
+    "label": "Martin",
+    "distance": 135
+  },
+  {
+    "id": "medzilaborce",
+    "label": "Medzilaborce",
+    "distance": 404
+  },
+  {
+    "id": "michalovce",
+    "label": "Michalovce",
+    "distance": 401
+  },
+  {
+    "id": "myjava",
+    "label": "Myjava",
+    "distance": 26
+  },
+  {
+    "id": "namestovo",
+    "label": "Námestovo",
+    "distance": 186
+  },
+  {
+    "id": "nitra",
+    "label": "Nitra",
+    "distance": 94
+  },
+  {
+    "id": "nove-zamky",
+    "label": "Nové Zámky",
+    "distance": 115
+  },
+  {
+    "id": "nove-mesto-nad-vahom",
+    "label": "Nové Mesto nad Váhom",
+    "distance": 6
+  },
+  {
+    "id": "partizanske",
+    "label": "Partizánske",
+    "distance": 81
+  },
+  {
+    "id": "pezinok",
+    "label": "Pezinok",
+    "distance": 86
+  },
+  {
+    "id": "piestany",
+    "label": "Piešťany",
+    "distance": 19
+  },
+  {
+    "id": "povazska-bystrica",
+    "label": "Považská Bystrica",
+    "distance": 73
+  },
+  {
+    "id": "poprad",
+    "label": "Poprad",
+    "distance": 246
+  },
+  {
+    "id": "presov",
+    "label": "Prešov",
+    "distance": 321
+  },
+  {
+    "id": "prievidza",
+    "label": "Prievidza",
+    "distance": 93
+  },
+  {
+    "id": "puchov",
+    "label": "Púchov",
+    "distance": 70
+  },
+  {
+    "id": "revuca",
+    "label": "Revúca",
+    "distance": 305
+  },
+  {
+    "id": "rimavska-sobota",
+    "label": "Rimavská Sobota",
+    "distance": 279
+  },
+  {
+    "id": "roznava",
+    "label": "Rožňava",
+    "distance": 338
+  },
+  {
+    "id": "ruzomberok",
+    "label": "Ružomberok",
+    "distance": 169
+  },
+  {
+    "id": "sabinov",
+    "label": "Sabinov",
+    "distance": 316
+  },
+  {
+    "id": "senec",
+    "label": "Senec",
+    "distance": 75
+  },
+  {
+    "id": "senica",
+    "label": "Senica",
+    "distance": 44
+  },
+  {
+    "id": "skalica",
+    "label": "Skalica",
+    "distance": 62
+  },
+  {
+    "id": "snina",
+    "label": "Snina",
+    "distance": 414
+  },
+  {
+    "id": "sobrance",
+    "label": "Sobrance",
+    "distance": 420
+  },
+  {
+    "id": "stara-lubovna",
+    "label": "Stará Ľubovňa",
+    "distance": 292
+  },
+  {
+    "id": "stropkov",
+    "label": "Stropkov",
+    "distance": 372
+  },
+  {
+    "id": "sala",
+    "label": "Šaľa",
+    "distance": 85
+  },
+  {
+    "id": "samorin",
+    "label": "Šamorín",
+    "distance": 115
+  },
+  {
+    "id": "sturovo",
+    "label": "Štúrovo",
+    "distance": 164
+  },
+  {
+    "id": "topolcany",
+    "label": "Topoľčany",
+    "distance": 53
+  },
+  {
+    "id": "trebisov",
+    "label": "Trebišov",
+    "distance": 389
+  },
+  {
+    "id": "trencin",
+    "label": "Trenčín",
+    "distance": 34
+  },
+  {
+    "id": "trnava",
+    "label": "Trnava",
+    "distance": 58
+  },
+  {
+    "id": "turcianske-teplice",
+    "label": "Turčianske Teplice",
+    "distance": 159
+  },
+  {
+    "id": "tvrdosin",
+    "label": "Tvrdošín",
+    "distance": 198
+  },
+  {
+    "id": "velky-krtis",
+    "label": "Veľký Krtíš",
+    "distance": 215
+  },
+  {
+    "id": "vranov-nad-toplou",
+    "label": "Vranov nad Topľou",
+    "distance": 367
+  },
+  {
+    "id": "zvolen",
+    "label": "Zvolen",
+    "distance": 198
+  },
+  {
+    "id": "zarnovica",
+    "label": "Žarnovica",
+    "distance": 156
+  },
+  {
+    "id": "ziar-nad-hronom",
+    "label": "Žiar nad Hronom",
+    "distance": 176
+  },
+  {
+    "id": "zlate-moravce",
+    "label": "Zlaté Moravce",
+    "distance": 125
+  },
+  {
+    "id": "zilina",
+    "label": "Žilina",
+    "distance": 105
+  }
+]

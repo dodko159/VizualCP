@@ -15,9 +15,9 @@ function showMobileAlert(){
             }
         //}
     }
-	
-	$("#mobile-alert-window").click(function(){
-		$(this).removeClass("mobile");
+
+    window.jQuery("#mobile-alert-window").click(function(){
+        window.jQuery(this).removeClass("mobile");
 	});
 }
 

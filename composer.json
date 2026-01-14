@@ -1,6 +1,9 @@
 {
-    "require": {
-        "phpmailer/phpmailer": "^6.9",
-        "dompdf/dompdf": "^3.1"
-    }
+  "require": {
+    "dompdf/dompdf": "^3.1",
+    "ext-json": "*",
+    "phpmailer/phpmailer": "^6.9",
+    "phpoffice/phpspreadsheet": "^5.3.0",
+    "ext-sqlite3": "*"
+  }
 }

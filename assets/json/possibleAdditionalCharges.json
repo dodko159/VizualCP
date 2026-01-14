@@ -1,0 +1,90 @@
+[
+  {
+    "id": "possible-additional-charges-1",
+    "header": "Výplň dutinková drevotrieska",
+    "hint": null,
+    "imgSrc": null,
+    "label": "Výplň dutinková drevotrieska: Dvere môžu byť vyplnené papierovou voštinou alebo dutinkovou drevotrieskou za príplatok 30 €. Voština je papierová vrstva, dutinková drevotrieska je z drevenej štiepky. Dutinkovú drevotriesku odporúčame do dverí V1, ale môžu ísť do všetkých dverí z kategórie Vanesa a Petra. Dutinková drevotrieska je tažšia, pevnejšia a izolačnejšia.",
+    "price": 30,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-silicone-frame",
+    "header": "Silikónové tesnenie do zárubne",
+    "hint": null,
+    "imgSrc": null,
+    "label": "Silikónové tesnenie do zárubne 10 €/kus: Do zárubne vyfrézujeme drážku a do nej sa vsunie silikónové tesnenie. To má výhodu, že pri zatváraní sú dvere tichšie a keď sú zatvorené, tak silikónové tesnenie eliminuje zvuk zo susednej miestnosti.",
+    "price": 10,
+    "setCountBasedOnDoorsCount": true,
+    "youtubeVideoCode": "dFC3DXbt0Jw",
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-silicone-wall-frame",
+    "header": "Vytmelenie nerovností medzi stenou a zárubňou",
+    "hint": null,
+    "imgSrc": null,
+    "label": "Vytmelenie nerovností medzi stenou a zárubňou 6 €/kus: Pri osadení zárubne môže pri krivých stenách vzniknúť medzera medzi stenou a zárubňou. Túto medzeru vieme vyplniť akrylovým silikónom. Vzhľadom na elasticitu silikónu sa dajú vymeniť iba medzery do 0,5 cm. Kúpeľňa a WC sa zvnútra nesilikónujú. Tiež sa nesilikónuje, keď sú dvere v rohu.",
+    "price": 6,
+    "setCountBasedOnDoorsCount": true,
+    "youtubeVideoCode": "BXC4KWbJWks",
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-4",
+    "header": null,
+    "hint": null,
+    "imgSrc": null,
+    "label": "Vynášanie na 3. a vyššie poschodie bez výťahu: Za vynášanie na 3. a vyššie poschodie bez výťahu sa účtuje príplatok za vynesenie dverí, zárubní, materiálu a náradia 100 €.",
+    "price": 100,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-5",
+    "header": null,
+    "hint": null,
+    "imgSrc": null,
+    "label": "Príplatok za steny hrubšie ako 20 cm 12 €/extra 10 cm: Ak sú steny hrubšie ako 20 cm, tak sa účtuje príplatok za extra materiál 12 € za každých extra 10 cm.",
+    "price": 12,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-6",
+    "header": null,
+    "hint": null,
+    "imgSrc": null,
+    "label": "Príplatok za dvere vyššie ako 207 cm 20 €/kus: Dvere s výškou 207 cm až 240 sm sú s príplatkom 20 €/kus za drahší materiál. Nie všetky materiály sa dajú dodať vo výške nad 207 cm.",
+    "price": 20,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-7",
+    "header": null,
+    "hint": null,
+    "imgSrc": null,
+    "label": "Obklad pôvodných oceľových zárubní 25 €/kus: Ak sa jedná o obklad pôvodných oveľových zárubní, tak sa účtuje príplatok 25€. Treba ale brať do úvahy, že pri obkladoch pôvodných zárubní sa stavebný otvor zúži o cca 3,5 cm z každej strany. To znamená cca 3,5 cm z hora a cca 7 cm zo šírky.",
+    "price": 25,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  },
+  {
+    "id": "possible-additional-charges-8",
+    "header": null,
+    "hint": null,
+    "imgSrc": null,
+    "label": "Príplatok za zarezávanie obložiek 15 €/kus: Obložky sa pri montáži zarezávajú, ak sú nesprávne riešené stavebné otvory. Napríklad ak sú schody medzi miestnosťami viac ako 5 mm, ďalej ak nie sú úchyty na stenách na zárubnu a musí sa z obložky zrezávať, alebo ak je obklad v kúpelňi / WC do výšky menej ako je výška dverí a treva z obložky odfrézovať drážku.",
+    "price": 15,
+    "setCountBasedOnDoorsCount": false,
+    "youtubeVideoCode": null,
+    "videoSrc": null
+  }
+]

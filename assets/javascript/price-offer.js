@@ -1,88 +1,155 @@
-$(document).ready(function(){
-    var priceOfferWrap = $('#price-offer-wrapper');
+const phpUrl = "add-session-val.php";
 
-    $('#po_link').click(function(){
-        $(priceOfferWrap).toggleClass("hide");
-        $("#price-offer-window").removeClass("hide");
-        $("#price-offer-add-item-window").addClass("hide");
+window.jQuery(document).ready(function(){
+    var isOldPriceOfferEnabled = false;
+    var priceOfferOpenByDefault = false;
+    var priceOfferWrap = window.jQuery('#price-offer-wrapper');
 
-        $('.price-offer-message').each(function( index ) { //skovaj spravy
-            if(!$( this ).hasClass('hide'))
-                $( this ).addClass('hide');
+    if (!priceOfferOpenByDefault) {
+        window.jQuery("#price-offer-container").addClass("display-none");
+        window.jQuery("#doors").removeClass("display-none");
+    }
+
+    document.getElementById('openclose_btn_text_area_doors').addEventListener('click', function () {
+        window.jQuery("#price-offer-container").addClass("display-none");
+        window.jQuery("#doors-container").removeClass("display-none");
+    })
+
+    document.getElementById('openclose_btn_text_area_priceOffer').addEventListener('click', function () {
+        window.jQuery("#price-offer-container").removeClass("display-none");
+        window.jQuery("#doors-container").addClass("display-none");
+    })
+
+    //open shopping cart
+    window.jQuery('#po_link').click(function(){
+        window.jQuery(priceOfferWrap).toggleClass("hide");
+        window.jQuery("#price-offer-window").removeClass("hide");
+        window.jQuery("#price-offer-add-item-window").addClass("hide");
+
+        window.jQuery('.price-offer-message').each(function( index ) { //skovaj spravy
+            if(!window.jQuery( this ).hasClass('hide'))
+                window.jQuery( this ).addClass('hide');
         });
     });
 
-    $('#po_link_add').click(function(){
-        //resetovat data
-        $("#price-offer-width-add").val("W60");
-        $("#price-offer-count-add").val("1");
-        $("#price-offer-frame-add").prop('checked', true);
-        $("#price-offer-info-add").val("");
-        $("#price-offer-add-title").html(getActualDoorAsTitle());
+    //original version
+    //intermediate window before adding to the shopping cart
+    if (isOldPriceOfferEnabled) {
+        // window.jQuery('#po_link_add').click(function () {
+        //     //resetovat data
+        //     window.jQuery("#price-offer-width-add").val("W60");
+        //     window.jQuery("#price-offer-count-add").val("1");
+        //     window.jQuery("#price-offer-frame-add").prop('checked', true);
+        //     window.jQuery("#price-offer-info-add").val("");
+        //     window.jQuery("#price-offer-add-title").html(getActualDoorAsTitle());
+        //
+        //     //nastavenie viditelnosti
+        //     window.jQuery(priceOfferWrap).removeClass("hide");
+        //     window.jQuery("#price-offer-window").addClass("hide");
+        //     window.jQuery("#price-offer-add-item-window").removeClass("hide");
+        // });
+    }
 
-        //nastavenie viditelnosti
-        $(priceOfferWrap).removeClass("hide");
-        $("#price-offer-window").addClass("hide");
-        $("#price-offer-add-item-window").removeClass("hide");
-    });
+    //original version
+    if (isOldPriceOfferEnabled) {
+        // window.jQuery("#price-offer-add-item-window form").submit(function (e) {
+        //     e.preventDefault(); // zrusi klasicky submit
+        //
+        //     var actualDoor = getActualDoor();
+        //     if (actualDoor.length === 2) {
+        //         var frame = 0;
+        //         if (window.jQuery("#price-offer-frame-add").is(':checked')) {
+        //             frame = 1;
+        //         }
+        //         var data = {
+        //             'doorType': actualDoor[0],
+        //             'material': actualDoor[1],
+        //             'width': window.jQuery("#price-offer-width-add").val(),
+        //             'count': window.jQuery("#price-offer-count-add").val(),
+        //             'frame': frame,
+        //             'assembly': true,
+        //             'info': window.jQuery("#price-offer-info-add").val(),
+        //             'addDoor': true
+        //         }
+        //         window.jQuery.post(phpUrl, data)
+        //             .done(function (response) {
+        //                 if (isSuccess(response)) {
+        //                     pridajElement(response);
+        //                 } else {
+        //                     console.log(json['message']);
+        //                     // hodi error
+        //                 }
+        //             }).fail(
+        //             // hodi error
+        //         ).always(function () {
+        //             window.jQuery('#price-offer-add-close-button').click(); // zatvor
+        //         });
+        //     }
+        // });
+    }
 
-    $("#price-offer-add-item-window form").submit(function ( e ) {
-        e.preventDefault(); // zrusi klasicky submit
+    //updated version
+    if (!isOldPriceOfferEnabled) {
+        window.jQuery("#po_link_add").click(function (e) {
+            e.preventDefault(); // zrusi klasicky submit
 
-        var actualDoor = getActualDoor();
-        if (actualDoor.length === 2) {
-            var frame = 0;
-            if($("#price-offer-frame-add").is(':checked')){
-                frame = 1;
-            }
-            var data = {
-                'doorType' : actualDoor[0],
-                'material' : actualDoor[1],
-                'width'    : $("#price-offer-width-add").val(),
-                'count'    : $("#price-offer-count-add").val(),
-                'frame'    : frame,
-                'assembly' : true,
-                'info'     : $("#price-offer-info-add").val(),
-                'addDoor' : true
-            }
-            $.post("add-session-val.php", data)
-                .done( function(response){
-                    if(isSuccess(response)){
-                        pridajElement(response);
-                    } else {
-                        console.log(json['message']);
-                        // hodi error
-                    }
-                }).fail(
+            var actualDoor = getActualDoor();
+            if (actualDoor.length === 2) {
+                // var frame = 0;
+                // if(window.jQuery("#price-offer-frame-add").is(':checked')){
+                //     frame = 1;
+                // }
+                var data = {
+                    'doorType': actualDoor[0],
+                    'material': actualDoor[1],
+                    'width': null,
+                    'count': 1,
+                    'frame': true,
+                    'assembly': false,
+                    'info': "",
+                    'addDoor': true
+                }
+                window.jQuery.post(phpUrl, data)
+                    .done(function (response) {
+                        if (isSuccess(response)) {
+                            pridajElement(response);
+                        } else {
+                            console.log(json['message']);
+                            // hodi error
+                        }
+                    }).fail(
                     // hodi error
-                ).always(function(){
-                    $('#price-offer-add-close-button').click(); // zatvor
+                ).always(function () {
+                    window.jQuery('#price-offer-add-close-button').click(); // zatvor
                 });
-        }
-    });
+            }
+        });
+    }
 
-    $("#price-offer-add-item-window .fa-minus").click(function(){
-        var cntInput = $("#price-offer-count-add")[0];
-        if (cntInput.value > 1) {
-            cntInput.value--;
-        }
-    });
-    $("#price-offer-add-item-window .fa-plus").click(function(){
-        var cntInput = $("#price-offer-count-add")[0];
-        cntInput.value++;
-    });
+    if (isOldPriceOfferEnabled) {
+        // window.jQuery("#price-offer-add-item-window .fa-minus").click(function () {
+        //     var cntInput = window.jQuery("#price-offer-count-add")[0];
+        //     if (cntInput.value > 1) {
+        //         cntInput.value--;
+        //     }
+        // });
+        // window.jQuery("#price-offer-add-item-window .fa-plus").click(function () {
+        //     var cntInput = window.jQuery("#price-offer-count-add")[0];
+        //     cntInput.value++;
+        // });
+    }
 
-    $('#price-offer-close-button').click(function(){
-        $(priceOfferWrap).addClass("hide");
+    window.jQuery('#price-offer-close-button').click(function(){
+        window.jQuery(priceOfferWrap).addClass("hide");
         grecaptcha.reset(); // reset recaptcha
     });
 
-    $('#price-offer-add-close-button').click(function(){
-        $(priceOfferWrap).addClass("hide");
+    window.jQuery('#price-offer-add-close-button').click(function(){
+        window.jQuery(priceOfferWrap).addClass("hide");
         grecaptcha.reset(); // reset recaptcha
     });
-   
-    $("#price-offer-window #priceOfferMailForm").submit(function ( e ) {
+
+    window.jQuery("#price-offer-window #priceOfferMailForm").submit(function ( e ) {
         e.preventDefault(); // zrusi klasicky submit
 
         if(validateOfferForm()){
@@ -92,14 +159,14 @@ $(document).ready(function(){
 
     });
 
-    $("#price-offer-window #priceOfferPDFform").submit(function ( e ) {
+    window.jQuery("#price-offer-window #priceOfferPDFform").submit(function ( e ) {
         e.preventDefault(); // zrusi klasicky submit
         var data = {
-            'name': $('#price-offer-name').val()
+            'name': window.jQuery('#price-offer-name').val()
         };
         console.log("priceOfferPDFform CLICK");
-        $.ajax({                    // stiahni PDF
-            url: 'downloadPDF.php', 
+        window.jQuery.ajax({                    // stiahni PDF
+            url: 'downloadPDF.php',
             data: data,
             type: 'POST',
             success: function (resp) {
@@ -115,12 +182,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#price-offer-assembly').click(function() {
+    window.jQuery('#price-offer-assembly').click(function() {
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setAssembly",
             'newValue' : checked
         }).done(function (response) {
@@ -132,12 +199,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#price-offer-seal').click(function() {
+    window.jQuery('#price-offer-seal').click(function() {
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setSeal",
             'newValue' : checked
         }).done(function (response) {
@@ -149,12 +216,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#price-offer-putty').click(function() {
+    window.jQuery('#price-offer-putty').click(function() {
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setPutty",
             'newValue' : checked
         }).done(function (response) {
@@ -166,12 +233,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#price-offer-ironFrame').click(function() {
+    window.jQuery('#price-offer-ironFrame').click(function() {
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setIronFrame",
             'newValue' : checked
         }).done(function (response) {
@@ -183,12 +250,12 @@ $(document).ready(function(){
         });
     });
 
-    $('#price-offer-floor3').click(function() {
+    window.jQuery('#price-offer-floor3').click(function() {
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setFloor3",
             'newValue' : checked
         }).done(function (response) {
@@ -200,12 +267,12 @@ $(document).ready(function(){
         });
     });
 
-    $("#price-offer-thickerFrame").on( "focusout", function() {
+    window.jQuery("#price-offer-thickerFrame").on( "focusout", function() {
         var pocet = null;
-        if($(this).val() > 0){
-            pocet = $(this).val();
+        if(window.jQuery(this).val() > 0){
+            pocet = window.jQuery(this).val();
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setThickerFrame",
             'newValue' : pocet
         }).done(function (response) {
@@ -217,12 +284,12 @@ $(document).ready(function(){
         });
     });
 
-    $("#price-offer-higherFrame").on( "focusout", function() {
+    window.jQuery("#price-offer-higherFrame").on( "focusout", function() {
         var pocet = null;
-        if($(this).val() > 0){
-            pocet = $(this).val();
+        if(window.jQuery(this).val() > 0){
+            pocet = window.jQuery(this).val();
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setHigherFrame",
             'newValue' : pocet
         }).done(function (response) {
@@ -234,12 +301,12 @@ $(document).ready(function(){
         });
     });
 
-    $("#price-offer-doorLiners").on( "focusout", function() {
+    window.jQuery("#price-offer-doorLiners").on( "focusout", function() {
         var pocet = null;
-        if($(this).val() > 0){
-            pocet = $(this).val();
+        if(window.jQuery(this).val() > 0){
+            pocet = window.jQuery(this).val();
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setDoorLiners",
             'newValue' : pocet
         }).done(function (response) {
@@ -251,12 +318,12 @@ $(document).ready(function(){
         });
     });
 
-    $("#price-offer-distance").on( "focusout", function() {
+    window.jQuery("#price-offer-distance").on( "focusout", function() {
         var pocet = null;
-        if($(this).val() > 0){
-            pocet = $(this).val();
+        if(window.jQuery(this).val() > 0){
+            pocet = window.jQuery(this).val();
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "setDistance",
             'newValue' : pocet
         }).done(function (response) {
@@ -268,54 +335,54 @@ $(document).ready(function(){
         });
     });
 
-    $('input.noBellowZero').keyup(function() {
-        if($(this).val() < 0){
-            $(this).val("0");
+    window.jQuery('input.noBellowZero').keyup(function() {
+        if(window.jQuery(this).val() < 0){
+            window.jQuery(this).val("0");
         }
     });
 
-    $('#price-offer-name').change(function() {
-        $.post("add-session-val.php", {'name':this.value});
+    window.jQuery('#price-offer-name').change(function() {
+        window.jQuery.post(phpUrl, {'name':this.value});
     });
-    $('#price-offer-mail').change(function() {
-        $.post("add-session-val.php", {'mail':this.value});
+    window.jQuery('#price-offer-mail').change(function() {
+        window.jQuery.post(phpUrl, {'mail':this.value});
     });
-    $('#price-offer-mobile').change(function() {
-        $.post("add-session-val.php", {'phone':this.value});
+    window.jQuery('#price-offer-mobile').change(function() {
+        window.jQuery.post(phpUrl, {'phone':this.value});
     });
 
     setListeners("#price-offer-window ");
     recalculatePriceOfferSize();
 });
 
-$(window).resize(function() {
+window.jQuery(window).resize(function() {
     recalculatePriceOfferSize();
 });
 
 function setListeners(id){
 
-    $(id+'.price-offer-remove-item').click(function(){
-        var poLine = $( this ).parent().parent();
-        var id = $( poLine ).attr("door-id");
-        $.post("add-session-val.php", {
+    window.jQuery(id+'.price-offer-remove-item').click(function(){
+        var poLine = window.jQuery( this ).parent().parent();
+        var id = window.jQuery( poLine ).attr("door-id");
+        window.jQuery.post(phpUrl, {
             'function' : "remove",
             'position' : id
         }).done(function (response) {
             if(isSuccess(response)){
-                $("#po-item-"+id).remove();
-                if($("#price-offer-items-container").children().length == 0 ){
-                    $("#price-offer-empty-text").removeClass('hide');
-                    $('#price-offer-additional').addClass('hide');
+                window.jQuery("#po-item-"+id).remove();
+                if(window.jQuery("#price-offer-items-container").children().length == 0 ){
+                    window.jQuery("#price-offer-empty-text").removeClass('hide');
+                    window.jQuery('#price-offer-additional').addClass('hide');
                 }
                 resetFullPrice();
             }
         });
     });
 
-    $(id+'.price-offer-width').on('change', function() {
-        var poLine = $( this ).parent();
-        var id = $( poLine ).attr("door-id");
-        $.post("add-session-val.php", {
+    window.jQuery(id+'.price-offer-width').on('change', function() {
+        var poLine = window.jQuery( this ).parent();
+        var id = window.jQuery( poLine ).attr("door-id");
+        window.jQuery.post(phpUrl, {
             'function' : "changeWidth",
             'newValue' : this.value,
             'position' : id
@@ -325,10 +392,10 @@ function setListeners(id){
         });
     });
 
-    $(id+'.fa-clone').click( function() {
-        var poLine = $( this ).parent().parent();
-        var id = $( poLine ).attr("door-id");
-        $.post("add-session-val.php", {
+    window.jQuery(id+'.fa-clone').click( function() {
+        var poLine = window.jQuery( this ).parent().parent();
+        var id = window.jQuery( poLine ).attr("door-id");
+        window.jQuery.post(phpUrl, {
             'function' : "clone",
             'position' : id
         }).done(function (response) {
@@ -341,25 +408,25 @@ function setListeners(id){
         });
     });
 
-    $(id+'.fa-minus').click( function() {
-        var poLine = $( this ).parent();
-        var cntInput = $( poLine ).children(".price-offer-count")[0];
+    window.jQuery(id+'.fa-minus').click( function() {
+        var poLine = window.jQuery( this ).parent();
+        var cntInput = window.jQuery( poLine ).children(".price-offer-count")[0];
         if (cntInput.value > 1) {
             cntInput.value--;
-            $( cntInput ).change();
+            window.jQuery( cntInput ).change();
         }
     });
-    $(id+'.fa-plus').click( function() {
-        var poLine = $( this ).parent();
-        var cntInput = $( poLine ).children(".price-offer-count")[0];
+    window.jQuery(id+'.fa-plus').click( function() {
+        var poLine = window.jQuery( this ).parent();
+        var cntInput = window.jQuery( poLine ).children(".price-offer-count")[0];
         cntInput.value++;
-        $( cntInput ).change();
+        window.jQuery( cntInput ).change();
     });
 
-    $(id+'.price-offer-count').change(function() {
-        var poLine = $( this ).parent();
-        var id = $( poLine ).attr("door-id");
-        $.post("add-session-val.php", {
+    window.jQuery(id+'.price-offer-count').change(function() {
+        var poLine = window.jQuery( this ).parent();
+        var id = window.jQuery( poLine ).attr("door-id");
+        window.jQuery.post(phpUrl, {
             'function' : "changeCount",
             'newValue' : this.value,
             'position' : id
@@ -373,30 +440,30 @@ function setListeners(id){
         });
     });
 
-    $(id+'.price-offer-info').change(function() {
-        var poLine = $( this ).parent();
-        var id = $( poLine ).attr("door-id");
-        $.post("add-session-val.php", {
+    window.jQuery(id+'.price-offer-info').change(function() {
+        var poLine = window.jQuery( this ).parent();
+        var id = window.jQuery( poLine ).attr("door-id");
+        window.jQuery.post(phpUrl, {
             'function' : "changeInfo",
             'newValue' : this.value,
             'position' : id
         }).done(function (response) {
             if(isSuccess(response)){
-                
+
             } else {
                 // hodi error
             }
         });
     });
 
-    $(id+'.price-offer-frame').click(function() {
-        var poLine = $( this ).parent().parent();
-        var id = $( poLine ).attr("door-id");
+    window.jQuery(id+'.price-offer-frame').click(function() {
+        var poLine = window.jQuery( this ).parent().parent();
+        var id = window.jQuery( poLine ).attr("door-id");
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "changeFrame",
             'newValue' : checked,
             'position' : id
@@ -410,14 +477,14 @@ function setListeners(id){
         });
     });
 
-    $(id+'.price-offer-assemble').click(function() {
-        var poLine = $( this ).parent().parent();
-        var id = $( poLine ).attr("door-id");
+    window.jQuery(id+'.price-offer-assemble').click(function() {
+        var poLine = window.jQuery( this ).parent().parent();
+        var id = window.jQuery( poLine ).attr("door-id");
         var checked = 0;
         if(this.checked){
             checked = 1;
         }
-        $.post("add-session-val.php", {
+        window.jQuery.post(phpUrl, {
             'function' : "changeAssemble",
             'newValue' : checked,
             'position' : id
@@ -433,7 +500,7 @@ function setListeners(id){
 }
 
 function resetFullPrice() {
-    $.get( "./cart-get.php?fullPrice=1", function( data ) {
+    window.jQuery.get( "./cart-get.php?fullPrice=1", function( data ) {
         var price = 0;
         if(isSuccess(data)){
             var json = JSON.parse(data);
@@ -441,12 +508,12 @@ function resetFullPrice() {
         } else {
             //todo hod chybu
         }
-        $("#price-offer-full-price-number").html(price);
+        window.jQuery("#price-offer-full-price-number").html(price);
     });
 }
 
 function getPriceOf(id){
-    $.get( "./cart-get.php?price="+id, function( data ) {
+    window.jQuery.get( "./cart-get.php?price="+id, function( data ) {
         var price = 0;
         if(isSuccess(data)){
             var json = JSON.parse(data);
@@ -454,19 +521,19 @@ function getPriceOf(id){
         } else {
             //todo hod chybu
         }
-        $('#po-item-'+id+" .price-offer-item-price-number").html(price);
+        window.jQuery('#po-item-'+id+" .price-offer-item-price-number").html(price);
     });
 }
 
 function pridajElement(res){
     var json = JSON.parse(res);
-    $('#price-offer-items-container').append(json['result']);
-    var newItem = $('#price-offer-items-container .price-offer-line-item').last();
-    var id = "#" + $(newItem).attr('id') + " ";
+    window.jQuery('#price-offer-items-container').append(json['result']);
+    var newItem = window.jQuery('#price-offer-items-container .price-offer-line-item').last();
+    var id = "#" + window.jQuery(newItem).attr('id') + " ";
     setListeners(id);
     //zmaz prazdny oznam
-    $('#price-offer-empty-text').addClass('hide');
-    $('#price-offer-additional').removeClass('hide');
+    window.jQuery('#price-offer-empty-text').addClass('hide');
+    window.jQuery('#price-offer-additional').removeClass('hide');
     resetFullPrice();
 }
 
@@ -478,32 +545,32 @@ function isSuccess(res){
 function getActualDoor() {
     var result = [];
     var id = '#selected_door';
-    var src = $(id).attr('src');
+    var src = window.jQuery(id).attr('src');
     var fullName = src.split("/").splice(-1,1)[0];
     result.push(fullName.split(".")[0]);
     id = '#selected_material';
-    src = $(id).attr('src');
+    src = window.jQuery(id).attr('src');
     fullName = src.split("/").splice(-1,1)[0];
     result.push(fullName.split(".")[0]);
     return result;
 }
 
 function getActualDoorAsTitle() {
-    var selDoor = $("#doors .sel").parent();
-    var doorName = $(selDoor).children(".door_name").html();
-    var selMat = $("#door_materials .sel").parent();
-    var matName = $(selMat).children(".material_name").html();
+    var selDoor = window.jQuery("#doors .sel").parent();
+    var doorName = window.jQuery(selDoor).children(".door_name").html();
+    var selMat = window.jQuery("#door_materials .sel").parent();
+    var matName = window.jQuery(selMat).children(".material_name").html();
 
     var result = doorName.toUpperCase() + " - " + matName;
     return result;
 }
 
 function recalculatePriceOfferSize(){
-    var wh = $("#price-offer-window").height();
-    var title = $("#price-offer-title");
-    var th = title.outerHeight() + parseInt($( title ).css('marginTop')) + parseInt($( title ).css('marginBottom'));
+    var wh = window.jQuery("#price-offer-window").height();
+    var title = window.jQuery("#price-offer-title");
+    var th = title.outerHeight() + parseInt(window.jQuery( title ).css('marginTop')) + parseInt(window.jQuery( title ).css('marginBottom'));
     var newHeight = wh - th;
-    $("#price-offer-content").css("height", newHeight+"px");
+    window.jQuery("#price-offer-content").css("height", newHeight+"px");
 }
 
 /* function sendSessionValues(sessionData) {
@@ -512,7 +579,7 @@ function recalculatePriceOfferSize(){
         'material': "testovaci material"
     };
 
-    $.ajax({                    // add session data
+    window.jQuery.ajax({                    // add session data
         url: 'add-session-val.php', 
         data: data,
         type: 'POST',
@@ -530,14 +597,14 @@ function recalculatePriceOfferSize(){
 
 function sendMail(){
     var data = {
-        'name': $('#price-offer-name').val(),
-        'email': $('#price-offer-mail').val(),
-        'contact': $('#price-offer-mobile').val(),
-        'message' : $('#price-offer-note').val()
+        'name': window.jQuery('#price-offer-name').val(),
+        'email': window.jQuery('#price-offer-mail').val(),
+        'contact': window.jQuery('#price-offer-mobile').val(),
+        'message' : window.jQuery('#price-offer-note').val()
     };
 
-    $.ajax({                    // send mail
-        url: 'offerMail.php', 
+    window.jQuery.ajax({                    // send mail
+        url: 'offerMail.php',
         data: data,
         type: 'POST',
         success: function (resp2) {
@@ -546,10 +613,10 @@ function sendMail(){
             //let respObj = JSON.parse(resp2);
             if(resp2.success){
                 console.log("Sucess");
-                $( "#price-offer-successMessage1" ).removeClass('hide');
+                window.jQuery( "#price-offer-successMessage1" ).removeClass('hide');
             }else{
                 console.log("Fail");
-                $( "#price-offer-errorMessage3" ).removeClass('hide');
+                window.jQuery( "#price-offer-errorMessage3" ).removeClass('hide');
             }
         }
     });
@@ -563,11 +630,11 @@ function validateOfferForm(){
             ret = false;
     }
 
-    /*if(ret & & $(".g-recaptcha").length){
-        var rcpResponse = $('#g-recaptcha-response').val();
+    /*if(ret & & window.jQuery(".g-recaptcha").length){
+        var rcpResponse = window.jQuery('#g-recaptcha-response').val();
 
         if(rcpResponse === ""){
-            $( '#reCaptcha-errorMessage1' ).removeClass('hide');
+            window.jQuery( '#reCaptcha-errorMessage1' ).removeClass('hide');
             return false;
         }
 
@@ -575,7 +642,7 @@ function validateOfferForm(){
             'g-recaptcha-response' : rcpResponse
         };
 
-        $.ajax({   // check captcha
+        window.jQuery.ajax({   // check captcha
             url: 'captcha-check.php', 
             data: data,
             type: 'POST',
@@ -583,7 +650,7 @@ function validateOfferForm(){
                 grecaptcha.reset(); // reset recaptcha
                 var obj = jQuery.parseJSON( resp1 );
                 if(!obj.response.success){ // if not success
-                    $( '#reCaptcha-errorMessage2' ).removeClass('hide');
+                    window.jQuery( '#reCaptcha-errorMessage2' ).removeClass('hide');
                 }else{
                     sendMail();
                 }
@@ -602,47 +669,47 @@ function validateOfferValue(type, keepError){
     const reqErr = "#price-offer-errorMessage1";
     const mailErr = "#price-offer-errorMessage2";
 
-      $('.price-offer-message').each(function( index ) {
-        if(!$( this ).hasClass('hide') && !keepError)
-            $( this ).addClass('hide');
+      window.jQuery('.price-offer-message').each(function( index ) {
+        if(!window.jQuery( this ).hasClass('hide') && !keepError)
+            window.jQuery( this ).addClass('hide');
       });
 
     if(type == 'name'){ // kontrola mena
-        var name = $('#price-offer-name');
-        if(isNullOrEmpty($(name).val())){
-            if(!$(name).hasClass('invalid-value'))
-                $(name).addClass('invalid-value');
-            $( reqErr ).removeClass('hide'); // req error
+        var name = window.jQuery('#price-offer-name');
+        if(isNullOrEmpty(window.jQuery(name).val())){
+            if(!window.jQuery(name).hasClass('invalid-value'))
+                window.jQuery(name).addClass('invalid-value');
+            window.jQuery( reqErr ).removeClass('hide'); // req error
             return false;
         }else{
-            $(name).removeClass('invalid-value');
+            window.jQuery(name).removeClass('invalid-value');
             return true;
         }
     }else if(type == 'mail'){   // kontrola emailu
-        var mail = $('#price-offer-mail');
-        if(isNullOrEmpty($(mail).val())){
-            if(!$(mail).hasClass('invalid-value'))
-                $(mail).addClass('invalid-value');
-            $( reqErr ).removeClass('hide'); // req error
+        var mail = window.jQuery('#price-offer-mail');
+        if(isNullOrEmpty(window.jQuery(mail).val())){
+            if(!window.jQuery(mail).hasClass('invalid-value'))
+                window.jQuery(mail).addClass('invalid-value');
+            window.jQuery( reqErr ).removeClass('hide'); // req error
             return false;
-        }else if(!isEmail($(mail).val())){
-            if(!$(mail).hasClass('invalid-value'))
-                $(mail).addClass('invalid-value');
-            $( mailErr ).removeClass('hide'); // mail error
+        }else if(!isEmail(window.jQuery(mail).val())){
+            if(!window.jQuery(mail).hasClass('invalid-value'))
+                window.jQuery(mail).addClass('invalid-value');
+            window.jQuery( mailErr ).removeClass('hide'); // mail error
             return false;
         }else{
-            $(mail).removeClass('invalid-value');
+            window.jQuery(mail).removeClass('invalid-value');
             return true;
         }
     }/* else if(type == 'phone'){ // kontrolo rozlohy
-        var phone = $('#price-offer-mobile');
-        if(isNullOrEmpty($(phone).val())){
-            if(!$(phone).hasClass('invalid-value'))
-                $(phone).addClass('invalid-value');
-            $( reqErr ).removeClass('hide'); // req error
+        var phone = window.jQuery('#price-offer-mobile');
+        if(isNullOrEmpty(window.jQuery(phone).val())){
+            if(!window.jQuery(phone).hasClass('invalid-value'))
+                window.jQuery(phone).addClass('invalid-value');
+            window.jQuery( reqErr ).removeClass('hide'); // req error
             return false;
         }else{
-            $(phone).removeClass('invalid-value');
+            window.jQuery(phone).removeClass('invalid-value');
             return true;
         }
     } */
