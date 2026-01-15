@@ -224,7 +224,7 @@ function handleHandleCountChange(e: Event) {
           <div class="row mb-1">
             <div class="col-xm-12 col-xl-6">
               <input type="text"
-                     v-model="reactiveForm.handle.name"
+                     v-model.lazy="reactiveForm.handle.name"
                      :id="'handle-name'"
                      :placeholder="t('handles.namePlaceholder')"
                      class="form-control"/>
@@ -339,7 +339,7 @@ function handleHandleCountChange(e: Event) {
                        type="text"
                        class="form-control"
                        placeholder=" "
-                       v-model="reactiveForm.address.street"/>
+                       v-model.lazy="reactiveForm.address.street"/>
                 <label for="address-street">{{ t("delivery.street") }}</label>
               </div>
             </div>
@@ -349,7 +349,7 @@ function handleHandleCountChange(e: Event) {
                        type="text"
                        class="form-control"
                        placeholder=" "
-                       v-model="reactiveForm.address.streetNumber"/>
+                       v-model.lazy="reactiveForm.address.streetNumber"/>
                 <label for="address-streetNumber">{{ t("delivery.streetNumber") }}</label>
               </div>
             </div>
@@ -359,7 +359,7 @@ function handleHandleCountChange(e: Event) {
                        type="text"
                        class="form-control"
                        placeholder=" "
-                       v-model="reactiveForm.address.city"/>
+                       v-model.lazy="reactiveForm.address.city"/>
                 <label for="address-city">{{ t("delivery.city") }}</label>
               </div>
             </div>
@@ -369,7 +369,7 @@ function handleHandleCountChange(e: Event) {
                        type="text"
                        class="form-control"
                        placeholder=" "
-                       v-model="reactiveForm.address.zipCode"/>
+                       v-model.lazy="reactiveForm.address.zipCode"/>
                 <label for="address-zipCode">{{ t("delivery.zipCode") }}</label>
               </div>
             </div>
@@ -545,7 +545,7 @@ function handleHandleCountChange(e: Event) {
             <div class="col-sm-6 col-xl-6">
               <div class="form-floating">
                 <input id="contact-fullName"
-                       v-model="reactiveForm.contact.fullName"
+                       v-model.lazy="reactiveForm.contact.fullName"
                        type="text"
                        class="form-control"
                        placeholder=" "/>
@@ -570,7 +570,7 @@ function handleHandleCountChange(e: Event) {
             <div class="col-sm-6 col-xl-6">
               <div class="form-floating">
                 <input id="contact-phoneNumber"
-                       v-model="reactiveForm.contact.phoneNumber"
+                       v-model.lazy="reactiveForm.contact.phoneNumber"
                        type="text"
                        class="form-control"
                        placeholder=" "/>
