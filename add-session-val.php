@@ -1,7 +1,6 @@
 <?php
-include_once "cart-class.php";
+include_once "cart-model.php";
 session_start();
-
 
 $result[] = array(
     'sucess' => true,
@@ -38,21 +37,23 @@ if( isset($_POST['addDoor']) )
 {
 
     try{
-        if (!array_key_exists('priceOffer', $_SESSION)) {
-            $_SESSION['priceOffer'] = new CP();
+        if (!array_key_exists('priceOffer', $_SESSION) || is_null($_SESSION['priceOffer'])) {
+            $_SESSION['priceOffer'] = new PriceOffer();
         }
-    
-        $PO = fixObject($_SESSION['priceOffer']);
-        $result = $PO->addDoor(
+
+        $priceOffer = fixObject($_SESSION['priceOffer']);
+        $result = $priceOffer->addDoor(
             new Door(
                 getCategoryFromDoorType($_POST["doorType"]), //kategoria
                 $_POST["doorType"], //typ
                 $_POST["material"], //material
-                Width::getWidthFromString($_POST["width"]), //sirka
+                $_POST["width"], //sirka
                 $_POST["count"], //pocet
                 $_POST["info"],
                 $_POST["frame"],
-                $_POST["assembly"]) 
+                $_POST["assembly"],
+                false
+            )
         );
     }
     catch(Exception $e){
@@ -66,8 +67,9 @@ if( isset($_POST['addDoor']) )
 if( isset($_POST['function']) )
 {
     try{
-        $PO = fixObject($_SESSION['priceOffer']);
-        $result = $PO->doPostFunction($_POST);
+        /** @var PriceOffer $priceOffer */
+        $priceOffer = fixObject($_SESSION['priceOffer']);
+        $result = $priceOffer->doPostFunction($_POST);
     }
     catch(Exception $e){
         $result['sucess'] = false;

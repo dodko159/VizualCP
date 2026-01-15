@@ -87,12 +87,14 @@
     margin-bottom: 5px;
     margin-top: 5px;
     text-transform: uppercase;
+    font-weight: bold;
 }
 
 .category_desc{
     padding-left: calc(3.5vh + 25px);
     font-size: 20px;
     color: #f6f6f6;
+    line-height: 1.1;
 }
 
 .left_side .category_title_name{
@@ -122,6 +124,7 @@
     font-size: 19px;
     top: 88%;
     left: 7.5%;
+    line-height: 1.1;
 }
 
 .under_door .price_container{
@@ -191,7 +194,7 @@ and (min-resolution:.001dpcm) {
 
 /* material and door selection */
 
-.door_selection_container{ 
+.door_selection_container{
     float: right;
     right: 0px;
 
@@ -202,7 +205,7 @@ and (min-resolution:.001dpcm) {
 }
 
 .door_selection_container .selection_content{
-    padding-left: 25px;
+    padding-left: 10px;
 }
 
 .doors_container, .material_container, .rooms_container, .categories_container, .akcie{

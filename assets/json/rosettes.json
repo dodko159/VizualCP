@@ -1,0 +1,32 @@
+[
+  {
+    "id": "bb",
+    "header": "Rozeta - BB štandardný interiérový zámok",
+    "hint": null,
+    "imgSrc": null,
+    "label": "Rozeta - BB štandardný interiérový zámok",
+    "price": 0,
+    "youtubeVideoCode": "nR_Uve7NlVA",
+    "videoSrc": null
+  },
+  {
+    "id": "wc",
+    "header": "Rozeta - WC zámok",
+    "hint": null,
+    "imgSrc": null,
+    "label": "Rozeta - WC zámok",
+    "price": 11,
+    "youtubeVideoCode": "IQIsEioCgYo",
+    "videoSrc": null
+  },
+  {
+    "id": "fab",
+    "header": "Rozeta - FAB zámok",
+    "hint": "Vložku si zákazník dodáva sám.",
+    "imgSrc": null,
+    "label": "Rozeta - FAB zámok",
+    "price": 0,
+    "youtubeVideoCode": "uQmy3kzMh80",
+    "videoSrc": null
+  }
+]

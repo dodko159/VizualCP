@@ -61,7 +61,7 @@ fsapi = (function (undefined) {
     }
 }())
 
-$(document).ready(function(){
+window.JQuery && window.JQuery(document).ready(function () {
     btn = document.getElementById('full_screen_btn');
 
     if (fsapi.enter && fsapi.exit && fsapi.fullscreen) {
@@ -73,14 +73,13 @@ $(document).ready(function(){
             //element = document.getElementById('content_back');
             if (document[fsapi.fullscreen]) {
                 document[fsapi.exit]()
-                
-            }
-            else {
+
+            } else {
                 element[fsapi.enter]()
-                
+
             }
         }, false)
-    }else{
+    } else {
         btn.style.display = "none";
     }
 });

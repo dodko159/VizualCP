@@ -1,5 +1,5 @@
 <?php
-include_once "cart-class.php";
+include_once "cart-model.php";
 include_once "generatePDF.php";
 session_start();
 include_once "constants.php";
@@ -30,8 +30,8 @@ try {
 
    $doorInfo = null;
    if (isset($_SESSION['priceOffer'])) {
-      $PO = fixObject($_SESSION['priceOffer']);
-      if(isset($PO) && isset($PO->doors)){
+      $priceOffer = fixObject($_SESSION['priceOffer']);
+      if(isset($priceOffer) && isset($priceOffer->doors)){
          $canSend = true;
          $doorInfo = "<table style=\"border-collapse: collapse;\"><tr>
            <th style=\"border: 1px solid #dddddd; padding: 5px;\"></th>  
@@ -46,7 +46,7 @@ try {
            <th style=\"border: 1px solid #dddddd; padding: 5px;\">Poznámka</th>
          </tr>";
          $idx = 1;
-         foreach($PO->doors as $door){
+         foreach($priceOffer->doors as $door){
             $background = "";
             if($idx % 2 == 1){
                $background = ' style="background-color: #dddddd;"';
@@ -72,23 +72,23 @@ try {
             $idx++;
          }
 
-         $doorInfo .= "<tr><td colspan=\"8\" style=\"border: 0px; padding: 5px;\"><b>Spolu</b></td><td colspan=\"2\" style=\"border: 0px; padding: 5px;\"><b>".$PO->getFullPriceNoAdd().$currency."</b></td></tr>";
+         $doorInfo .= "<tr><td colspan=\"8\" style=\"border: 0px; padding: 5px;\"><b>Spolu</b></td><td colspan=\"2\" style=\"border: 0px; padding: 5px;\"><b>".$priceOffer->getFullPriceNoAdd().$currency."</b></td></tr>";
          $doorInfo .= "</table>";
          $doorInfo .= "*cena bez zárubne bez DPH<br>";
          $doorInfo .= "**cena celkom so zárubňov (ak je zvolená) bez DPH<br><br>";
          $doorInfo .= "<b>Dodatočné služby</b><br>";
-         //$doorInfo .= "Montáž: ".$PO->getAssemblyPrice().$currency."<br>";
-         $doorInfo .= "Obložky bez dverí: ".$PO->getDoorLiners()."ks - ".$PO->getLinerPrice().$currency."<br>";
-         $doorInfo .= "Vytmelenie nerovností: ".$PO->getPuttyPrice().$currency."<br>";
-         $doorInfo .= "Silikónové tesnenie: ".$PO->getSealPrice().$currency."<br>";
-         $doorInfo .= "Obklad oceľových zárubní: ".$PO->getIronPrice().$currency."<br>";
-         $doorInfo .= "Vynášanie na 3. poschodie a viac: ".$PO->getFloor3Price().$currency."<br>";
+         //$doorInfo .= "Montáž: ".$priceOffer->getAssemblyPrice().$currency."<br>";
+         $doorInfo .= "Obložky bez dverí: ".$priceOffer->getDoorLiners()."ks - ".$priceOffer->getLinerPrice().$currency."<br>";
+         $doorInfo .= "Vytmelenie nerovností: ".$priceOffer->getPuttyPrice().$currency."<br>";
+         $doorInfo .= "Silikónové tesnenie: ".$priceOffer->getSealPrice().$currency."<br>";
+         $doorInfo .= "Obklad oceľových zárubní: ".$priceOffer->getIronPrice().$currency."<br>";
+         $doorInfo .= "Vynášanie na 3. poschodie a viac: ".$priceOffer->getFloor3Price().$currency."<br>";
 
-         $doorInfo .= "Príplatok za hrubšie obložky: ".$PO->getThickerFramePrice().$currency."<br>";
-         $doorInfo .= "Príplatok za vysoké dvere: ".$PO->getHigherFramePrice().$currency."<br>";
-         $doorInfo .= "Doprava: ".$PO->getDistance()."km - ".$PO->getDistancePrice().$currency."<br>";
+         $doorInfo .= "Príplatok za hrubšie obložky: ".$priceOffer->getThickerFramePrice().$currency."<br>";
+         $doorInfo .= "Príplatok za vysoké dvere: ".$priceOffer->getHigherFramePrice().$currency."<br>";
+         $doorInfo .= "Doprava: ".$priceOffer->getDistance()."km - ".$priceOffer->getDistancePrice().$currency."<br>";
 
-         $doorInfo .= "<b>Celková cena: ".$PO->getFullPrice().$currency."</b><br>";
+         $doorInfo .= "<b>Celková cena: ".$priceOffer->getFullPrice().$currency."</b><br>";
       }
    }
 

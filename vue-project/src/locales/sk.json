@@ -1,0 +1,61 @@
+{
+  "accordionHeaders": {
+    "doors": "Interiérové dvere",
+    "handles": "Kľučky",
+    "delivery": "Dovoz",
+    "assemblyDoors": "Montáž",
+    "specialAccessories": "Špeciálne doplnky",
+    "possibleAdditionalCharges": "Možné príplatky",
+    "specialSurcharges": "Špeciálne príplatky",
+    "contact": "Kontaktné údaje"
+  },
+  "assemblyDoors": {
+    "note": "Akciová montáž dverí so zárubňou 25 € / kus. Akcia platí pri počte 6 a viac kusov. Minimálna suma na dvoch montážnikov je 150 €."
+  },
+  "contact": {
+    "email": "Email",
+    "fullName": "Meno",
+    "note": "Poznámka",
+    "phoneNumber": "Telefónne číslo"
+  },
+  "delivery": {
+    "address": "Adresa dovozu (nepovinné)",
+    "city": "Obec",
+    "district": "Vyberte okresné mesto",
+    "note": "Cena prepravy je 0,5 € za km. Preprava sa počíta od výroby v obci Čachtice.",
+    "street": "Ulica",
+    "streetNumber": "Číslo domu",
+    "zipCode": "PSČ"
+  },
+  "doors": {
+    "doorWidth": "Vyberte šírku",
+    "isDoorFrameEnabled": "Zárubňa",
+    "notSelected": "Neboli zvolené žiadne dvere.",
+    "remove": "Vymazať"
+  },
+  "handles": {
+    "assemblyHandlesRosettes": "Montáž kľučiek a roziet",
+    "namePlaceholder": "Zadajte názov kľučky"
+  },
+  "handlesAdditionalText": " Všetky kľučky nájdete na",
+  "submitButton": "Odoslať ponuku na email",
+  "validations": {
+    "invalidEmailFormat": "Nesprávny tvar emailu.",
+    "required": "Toto pole je povinné."
+  },
+  "components": {
+    "hint": {
+      "modal": {
+        "close": "Zavrieť"
+      }
+    },
+    "lineItems": {
+      "add": "Pridať",
+      "namePlaceholder": "Zadajte názov"
+    }
+  },
+  "alerts": {
+    "FORM_VALIDATIONS_ERROR": "Vo formulári sa nachádzajú chybné polia.",
+    "MAIL_SENDING_ERROR": "Nastala chyba pri posielaní emailu."
+  }
+}

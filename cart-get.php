@@ -1,5 +1,5 @@
 <?php
-include_once "cart-class.php";
+include_once "cart-model.php";
 session_start();
 
 $result[] = array(
@@ -13,8 +13,9 @@ if( isset($_GET['price']) )
     $result['message'] = "Insufficient data.";
 
     try {
-        $PO = fixObject($_SESSION['priceOffer']);
-        $price = $PO->getPriceOf($_GET['price']);
+        /** @var PriceOffer $priceOffer */
+        $priceOffer = fixObject($_SESSION['priceOffer']);
+        $price = $priceOffer->getPriceOf($_GET['price']);
         $result = array(
             'sucess' => true,
             'message' => "OK",
@@ -32,8 +33,8 @@ if( isset($_GET['fullPrice']) )
     $result['message'] = "Insufficient data.";
 
     try {
-        $PO = fixObject($_SESSION['priceOffer']);
-        $price = $PO->getFullPrice();
+        $priceOffer = fixObject($_SESSION['priceOffer']);
+        $price = $priceOffer->getFullPrice();
         $result = array(
             'sucess' => true,
             'message' => "OK",

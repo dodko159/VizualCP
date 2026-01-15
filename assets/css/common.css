@@ -33,6 +33,10 @@ body{
     visibility: hidden; 
 }
 
+.display-none {
+    display: none;
+}
+
 .ltr{
     direction: ltr;
 }
@@ -236,4 +240,11 @@ body{
 	#mobile-alert-window.mobile {
 		visibility: visible;
 	}
+}
+
+/* override PrimeVue global box-sizing */
+body *:not(#price-offer-container):not(#price-offer-container *) ,
+body *:not(#price-offer-container)::before,
+body *:not(#price-offer-container)::after {
+    box-sizing: content-box !important;
 }

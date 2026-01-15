@@ -1,5 +1,5 @@
 <?php
-include_once "cart-class.php";
+include_once "cart-model.php";
 ?>
 
 <div class="hide" id="price-offer-wrapper">
@@ -36,10 +36,10 @@ include_once "cart-class.php";
             <div id="price-offer-items-container">
                 <?php
                     $isImpty = true;
-                    if (array_key_exists('priceOffer', $_SESSION)) {
-                        $PO = fixObject($_SESSION['priceOffer']);
-                        if(isset($PO) && isset($PO->doors)){
-                            foreach($PO->doors as $idx => $door){
+                    if (array_key_exists('priceOffer', $_SESSION) && !is_null($_SESSION['priceOffer'])) {
+                        $priceOffer = fixObject($_SESSION['priceOffer']);
+                        if(isset($priceOffer) && isset($priceOffer->doors)){
+                            foreach($priceOffer->doors as $idx => $door){
                                 $isImpty = false;
 
                                 echo $door->getHTMLdoor($idx);
@@ -80,7 +80,7 @@ include_once "cart-class.php";
                             }
                         }
                     } else {
-                        $_SESSION['priceOffer'] = new CP();
+                        $_SESSION['priceOffer'] = new PriceOffer();
                     }
                 ?>
             </div>
@@ -95,44 +95,44 @@ include_once "cart-class.php";
                 *Cena dverí sa môže líšit podľa šírky dverí. Ceny sú uvedené bez DPH.</br>
                 <h3>Dodatočné služby</h3>
                 <!-- <div>
-                    <input type="checkbox" id="price-offer-assembly" class="checkbox" name="assembly" <?php if($PO->assembly) echo "checked"; ?>>
+                    <input type="checkbox" id="price-offer-assembly" class="checkbox" name="assembly" <?php if($priceOffer->assembly) echo "checked"; ?>>
                     <label for="assembly" class="checkbox-label">Montáž <?php echo $cena_montaze.$currency; ?>/dvere</label>
                 </div> -->
                 <div>
-                    <input type="checkbox" id="price-offer-putty" class="checkbox" name="putty" <?php if($PO->putty) echo "checked"; ?>>
+                    <input type="checkbox" id="price-offer-putty" class="checkbox" name="putty" <?php if($priceOffer->putty) echo "checked"; ?>>
                     <label for="putty" class="checkbox-label">Vytmeleni nerovností medzi stenou a zárubňou <?php echo $cena_tmelenia.$currency; ?>/dvere</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="price-offer-seal" class="checkbox" name="seal" <?php if($PO->seal) echo "checked"; ?>>
+                    <input type="checkbox" id="price-offer-seal" class="checkbox" name="seal" <?php if($priceOffer->seal) echo "checked"; ?>>
                     <label for="seal" class="checkbox-label">Silikónové tesnenie do zárubne <?php echo $cena_tesnenia.$currency; ?>/dvere</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="price-offer-ironFrame" class="checkbox" name="ironFrame" <?php if($PO->ironFrame) echo "checked"; ?>>
+                    <input type="checkbox" id="price-offer-ironFrame" class="checkbox" name="ironFrame" <?php if($priceOffer->ironFrame) echo "checked"; ?>>
                     <label for="ironFrame" class="checkbox-label">Obklad oceľových zárubní <?php echo $cena_obkladu_zarubne.$currency; ?>/dvere</label>
                 </div>
                 <div>
-                    <input type="checkbox" id="price-offer-floor3" class="checkbox" name="floor3" <?php if($PO->floor3) echo "checked"; ?>>
+                    <input type="checkbox" id="price-offer-floor3" class="checkbox" name="floor3" <?php if($priceOffer->floor3) echo "checked"; ?>>
                     <label for="floor3" class="checkbox-label">Vynášanie na 3. a vyššie poschodie (bez víťahu)</label>
                 </div>
                 <div>
-                    <input type="number" id="price-offer-thickerFrame" class="price-offer-count noBellowZero" name="thickerFrame" placeholder="" value="<?php if($PO->thickerFrame > 0) echo $PO->thickerFrame; ?>" min="0">
+                    <input type="number" id="price-offer-thickerFrame" class="price-offer-count noBellowZero" name="thickerFrame" placeholder="" value="<?php if($priceOffer->thickerFrame > 0) echo $priceOffer->thickerFrame; ?>" min="0">
                     <label for="thickerFrame" class="checkbox-label">Príplatok za obložky hrubšie ako 20cm <?php echo $cena_priplatok_hrubsia_zaruben.$currency; ?>/extra 10cm</label>
                 </div>
                 <div>
-                    <input type="number" id="price-offer-higherFrame" class="price-offer-count noBellowZero" name="higherFrame" placeholder="" value="<?php if($PO->higherFrame > 0) echo $PO->higherFrame; ?>" min="0">
+                    <input type="number" id="price-offer-higherFrame" class="price-offer-count noBellowZero" name="higherFrame" placeholder="" value="<?php if($priceOffer->higherFrame > 0) echo $priceOffer->higherFrame; ?>" min="0">
                     <label for="higherFrame" class="checkbox-label">Príplatok dvere vyššie ako 207cm <?php echo $cena_priplatok_vyssia_zaruben.$currency; ?>/dvere</label>
                 </div>
                 <div>
-                    <input type="number" id="price-offer-distance" class="price-offer-count noBellowZero" name="distance" placeholder="" value="<?php if($PO->distance > 0) echo $PO->distance; ?>" min="0">
+                    <input type="number" id="price-offer-distance" class="price-offer-count noBellowZero" name="distance" placeholder="" value="<?php if($priceOffer->distance > 0) echo $priceOffer->distance; ?>" min="0">
                     <label for="distance" class="checkbox-label">Dovoz sa počíta počet km od výroby v obci Čachtice</label>
                 </div>
                 <div>
-                    <input type="number" id="price-offer-doorLiners" class="price-offer-count noBellowZero" name="doorLiners" placeholder="" value="<?php if($PO->doorLiners > 0) echo $PO->doorLiners; ?>" min="0">
+                    <input type="number" id="price-offer-doorLiners" class="price-offer-count noBellowZero" name="doorLiners" placeholder="" value="<?php if($priceOffer->doorLiners > 0) echo $priceOffer->doorLiners; ?>" min="0">
                     <label for="doorLiners" class="checkbox-label">Počet obložiek bez dverí</label>
                 </div>
                 
                 <div class="rtl price-offer-full-price">
-                    <span id="price-offer-full-price-number"><?php echo $PO->getFullPrice(); ?></span><?php echo $currency; ?>
+                    <span id="price-offer-full-price-number"><?php echo $priceOffer->getFullPrice(); ?></span><?php echo $currency; ?>
                 </div>
                     Cena je len orientačná. Presná cenová ponuka bude vypracovaná až po potvrdení objednávky a zameraní dverí.
             </div>
@@ -162,7 +162,7 @@ include_once "cart-class.php";
                     <input type="text" class="" id="price-offer-note" placeholder="Poznámka">
                 </div>
 
-                <script src="https://www.google.com/recaptcha/api.js?hl=sk"></script>
+<!--                <script src="https://www.google.com/recaptcha/api.js?hl=sk"></script>-->
                 <!--<div class="g-recaptcha" data-sitekey="6LdTCasUAAAAAHdKMyLCMeIyp6n5y8rQM5OXwxEW">
                     <div style="width: 304px; height: 78px;">
                         <div>

@@ -1,7 +1,7 @@
             <div class="price-offer-line-item clearfix" id="po-item-<?php echo $idx; ?>">
                 <div class="door">
                     <img class="" <?php echo 'src="' . $material_path . '/' . $this->material .'.png"';?>></img>
-                    <img class="" <?php echo 'src="' . $doors_path . '/' . $this->category . "/" . $this->type .'.png"';?>></img>
+                    <img class="" <?php echo 'src="' . $doors_path . '/' . $this->category . "/" . $this->type . '.png"'; ?>></img>
                     <img class="rel" src="./images/zarubna.png"></img>
                 </div>
                 <div class="price-offer-line-content" door-id="<?php echo $idx; ?>">
