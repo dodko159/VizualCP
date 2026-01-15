@@ -1,5 +1,5 @@
 {
-  "profile": "STAGE",
+  "profile": "DEV",
   "PROD": {
     "baseUrl": "https://www.vizualizacia-dveri.sk/testCP",
     "dbFilename": "db.sqlite",

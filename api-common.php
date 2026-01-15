@@ -9,18 +9,7 @@ function sendJsonResponse($data, int $statusCode)
     exit;
 }
 
-function isPriceOfferInSessionValid(): bool
+function isPriceOfferInSessionValid(array $session): bool
 {
-    return !(isset($_SESSION['priceOffer']) && $_SESSION['priceOffer'] instanceof __PHP_Incomplete_Class);
-}
-
-function getPriceOfferFromSessionOrUnset(): ?PriceOffer
-{
-    if (!isPriceOfferInSessionValid()) {
-        unset($_SESSION['priceOffer']);
-        error_log('Removed incomplete session object priceOffer');
-        return null;
-    } else {
-        return $_SESSION['priceOffer'];
-    }
+    return !(isset($session['priceOffer']) && $session['priceOffer'] instanceof __PHP_Incomplete_Class);
 }
