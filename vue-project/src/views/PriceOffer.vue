@@ -555,7 +555,7 @@ function handleHandleCountChange(e: Event) {
             <div class="col-sm-6 col-xl-6">
               <div class="form-floating">
                 <input id="contact-email"
-                       v-model="reactiveForm.contact.email"
+                       v-model.lazy="reactiveForm.contact.email"
                        type="email"
                        class="form-control"
                        :class="{ 'is-invalid': getFieldValidations('contact-email').length }"
