@@ -61,4 +61,16 @@ const {t} = useI18n();
   order: 2;
   flex: 0 0 auto;
 }
+
+@media (max-width: 1000px) {
+  .accordion-button {
+    flex-wrap: wrap;
+  }
+
+  .accordion-badge {
+    flex: 1 1 100%;
+    margin-left: 0;
+    margin-top: 0.5em;
+  }
+}
 </style>

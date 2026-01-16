@@ -571,7 +571,7 @@ class Door
             $rawPrice = $rawPrice + ($this->type == "v1" ? Door::FEE_FRAME_OFFER : Door::FEE_FRAME);//extra fee for frame
         }
 
-        $rawPrice = $rawPrice + Width::class::getFee($this->width);//extra fee for width
+        $rawPrice = $rawPrice + Width::getFee($this->width);//extra fee for width
         $rawPrice = $rawPrice + ($this->isDtdSelected ? Door::FEE_DTD : 0);//extra fee for DTD
         return $this->count * $rawPrice;
     }

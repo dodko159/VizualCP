@@ -295,7 +295,7 @@ if ($isWien) {
 
                 <div id="price-offer-container">
                     <script type="module"
-                            src="<?php echo(AppConfigJsonDataManipulation::getAll()["isProductionVue"] ? "/public/app.js" : "http://localhost:5173/src/main.ts") ?>"></script>
+                            src="<?php echo(AppConfigJsonDataManipulation::getAll()["isProductionVueBuild"] ? AppConfigJsonDataManipulation::getAll()["baseUrl"] . "/public/app.js" : "http://localhost:5173/src/main.ts") ?>"></script>
                     <div id="vueApp"></div>
                 </div>
                 <div id="doors-container">
