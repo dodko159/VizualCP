@@ -1,5 +1,7 @@
 <?php
 
+include_once 'cart-model-api-request-objects.php';
+
 class ValidationMessage implements JsonSerializable
 {
     public $key;

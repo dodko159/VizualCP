@@ -57,13 +57,15 @@ Available configuration profiles:
 
 Configuration Options
 
+*baseUrl* — Base URL of the web page. E.g., https://www.vizualizacia-dveri.sk/
+
 *dbFilename* — Path to the SQLite3 database, currently used to store the offer number.
 It is recommended to place the database outside the source code directory to prevent data loss or accidental overwrites.
 
 *isProductionSmtp* — If set to true, SMTP credentials from app-config.json are used.
 If set to false, localhost is used.
 
-*isProductionVue* — Must be set to true for production environments.
+*isProductionVueBuild* — Must be set to true for production environments.
 
 *prefix: mail* — SMTP server configuration (host, port, username, password, encryption).
 

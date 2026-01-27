@@ -9,7 +9,7 @@ class DistrictsJsonDataManipulation
         return getArrayFromJsonFile("./assets/json/districts.json");
     }
 
-    public static function findByIdOrFalse($id)
+    public static function findByIdOrFalse(?string $id)
     {
         $list = DistrictsJsonDataManipulation::getAll();
         $item = array_filter($list, function ($r) use ($id) {
@@ -40,7 +40,7 @@ class PossibleAdditionalChargesJsonDataManipulation
         return getArrayFromJsonFile("./assets/json/possibleAdditionalCharges.json");
     }
 
-    public static function findByIdOrFalse($id)
+    public static function findByIdOrFalse(?string $id)
     {
         $list = PossibleAdditionalChargesJsonDataManipulation::getAll();
         $item = array_filter($list, function ($r) use ($id) {
@@ -57,7 +57,7 @@ class RosettesJsonDataManipulation
         return getArrayFromJsonFile("./assets/json/rosettes.json");
     }
 
-    public static function findByIdOrFalse($id)
+    public static function findByIdOrFalse(?string $id)
     {
         $list = RosettesJsonDataManipulation::getAll();
         $item = array_filter($list, function ($r) use ($id) {
@@ -74,7 +74,7 @@ class SpecialAccessoriesJsonDataManipulation
         return getArrayFromJsonFile("./assets/json/specialAccessories.json");
     }
 
-    public static function findByIdOrFalse($id)
+    public static function findByIdOrFalse(?string $id)
     {
         $list = SpecialAccessoriesJsonDataManipulation::getAll();
         $item = array_filter($list, function ($r) use ($id) {
@@ -91,7 +91,7 @@ class SpecialSurchargesJsonDataManipulation
         return getArrayFromJsonFile("./assets/json/specialSurcharges.json");
     }
 
-    public static function findByIdOrFalse($id)
+    public static function findByIdOrFalse(?string $id)
     {
         $list = SpecialSurchargesJsonDataManipulation::getAll();
         $item = array_filter($list, function ($r) use ($id) {

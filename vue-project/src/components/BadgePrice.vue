@@ -7,8 +7,9 @@ const props = defineProps<{ price: number | undefined }>()
 <template>
     <span class="badge bg-primary align-content-center fs-5">{{
         formatPrice(props.price)
-      }}</span>
+      }}
+    </span>
 </template>
 
-<style scoped>
+<style>
 </style>

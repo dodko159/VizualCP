@@ -41,68 +41,69 @@ function findLineItemByOrderIdx(orderIdx: number) {
 </script>
 
 <template>
-  <div
-      class="row mb-1"
-      v-for="(it, index) in lineItems"
+  <li v-for="(it, index) in lineItems"
       :key="index"
-  >
-    <div class="col-sm-2 col-xl-1">
-      <button
-          type="button"
-          class="btn btn-outline-secondary h-100"
-          @click="removeLineItem(index)"
-      >
-        <span class="fas fa-trash"/>
-      </button>
-    </div>
+      class="list-group-item px-0">
+    <div class="row">
+      <div class="col-sm-2 col-xl-1">
+        <button
+            type="button"
+            class="btn btn-outline-secondary h-100"
+            @click="removeLineItem(index)">
+          <span class="fas fa-trash"/>
+        </button>
+      </div>
 
-    <div class="col-sm-10 col-xl-5">
-      <input
-          v-model="it.name"
-          class="form-control"
-          :placeholder="t('components.lineItems.namePlaceholder')"
-      />
-    </div>
-
-    <div class="col-sm-4 col-xl-2">
-      <div class="input-group">
+      <div class="col-sm-10 col-xl-5">
         <input
-            type="number"
-            v-model.number="it.price"
+            v-model="it.name"
             class="form-control"
-            min="0"
+            :placeholder="t('components.lineItems.namePlaceholder')"
         />
-        <span class="input-group-text">€</span>
+      </div>
+
+      <div class="col-sm-4 col-xl-2">
+        <div class="input-group">
+          <input
+              type="number"
+              v-model.number="it.price"
+              class="form-control"
+              min="0"
+          />
+          <span class="input-group-text">€</span>
+        </div>
+      </div>
+
+      <div class="col-sm-4 col-xl-2">
+        <div class="input-group">
+          <input
+              type="number"
+              v-model.number="it.count"
+              class="form-control"
+              min="0"
+          />
+          <span class="input-group-text">ks</span>
+        </div>
+      </div>
+
+      <div class="col-sm-4 col-xl-2">
+        <BadgePrice
+            class="badge-full-width"
+            :price="findLineItemByOrderIdx(index)?.calculatedPrice"
+        />
       </div>
     </div>
+  </li>
+  <li class="list-group-item">
+    <button
+        type="button"
+        class="btn btn-outline-success"
+        @click="addLineItem">
+      <span class="fas fa-plus me-1"/>
+      {{ t("components.lineItems.add") }}
+    </button>
+  </li>
 
-    <div class="col-sm-4 col-xl-2">
-      <div class="input-group">
-        <input
-            type="number"
-            v-model.number="it.count"
-            class="form-control"
-            min="0"
-        />
-        <span class="input-group-text">ks</span>
-      </div>
-    </div>
-
-    <div class="col-sm-4 col-xl-2">
-      <BadgePrice
-          class="badge-full-width"
-          :price="findLineItemByOrderIdx(index)?.calculatedPrice"
-      />
-    </div>
-  </div>
-
-  <button
-      type="button"
-      class="btn btn-outline-success"
-      @click="addLineItem">
-    <span class="fas fa-plus me-1"/>
-    {{ t("components.lineItems.add") }}
-  </button>
 </template>
 
 <style>

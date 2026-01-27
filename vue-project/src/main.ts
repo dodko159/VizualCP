@@ -2,8 +2,6 @@ import {createApp} from 'vue'
 import App from './App.vue'
 
 import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
-import "./styles/custom-bootstrap.scss";
 import {createI18n} from "vue-i18n";
 import sk from './locales/sk.json'
 import {router} from "./router.js";

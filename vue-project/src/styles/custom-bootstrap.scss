@@ -1,3 +1,5 @@
+@import "bootstrap/scss/functions";
+
 $font-size-base: 1rem;
 
 $primary: #dcb946;
@@ -11,4 +13,12 @@ $h5-font-size: $font-size-base;  // 1.25rem
 $h6-font-size: $font-size-base;   // 1rem
 $grid-gutter-width: 0.5rem;
 
+// 3️⃣ Bootstrap variables + mixins
+@import "bootstrap/scss/variables";
+
+$accordion-button-active-bg: rgba($primary, 0.6);
+
+@import "bootstrap/scss/mixins";
+
+// 4️⃣ Bootstrap itself (this creates CSS variables)
 @import "bootstrap/scss/bootstrap";

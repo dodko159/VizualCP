@@ -1,7 +1,10 @@
 <?php
 include_once "api-common.php";
 include_once "cart-model.php";
+include_once "cart-model-api-request-objects.php";
+include_once "cart-model-api-response-objects.php";
 include_once "validation.php";
+
 session_start();
 
 // ---------------------
@@ -9,18 +12,24 @@ session_start();
 // ---------------------
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     if (isset($_GET['getApiResponse'])) {
-        if (!isset($_SESSION['priceOffer'])) {
-            sendJsonResponse(['error' => 'No price offer in session'], 404);
+        try {
+            if (!isPriceOfferInSessionValid($_SESSION)) {
+                $_SESSION['priceOffer'] = new PriceOffer();
+                error_log("Session price offer is invalid, resetting." . json_encode($_SESSION));
+            }
+
+            /** @var PriceOffer $sessionPriceOffer */
+            $sessionPriceOffer = $_SESSION['priceOffer'];
+            $responsePriceOffer = PriceOffer::fromSession($sessionPriceOffer)->toResponse();
+
+            sendJsonResponse(new ApiResponse(
+                DistrictsJsonDataManipulation::getAll() ?? array(),
+                $responsePriceOffer
+            ), 200);
+        } catch (Throwable $e) {
+            error_log($e);
+            sendJsonResponse(['error' => $e->getTrace()], 500);
         }
-
-        /** @var PriceOffer $sessionPriceOffer */
-        $sessionPriceOffer = $_SESSION['priceOffer'];
-        $responsePriceOffer = $sessionPriceOffer->toResponse();
-
-        sendJsonResponse(new ApiResponse(
-            DistrictsJsonDataManipulation::getAll() ?? array(),
-            $responsePriceOffer
-        ), 200);
     } else {
         sendJsonResponse(['error' => 'Missing getApiResponse parameter'], 400);
     }
@@ -42,11 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['priceOffer'] = $priceOffer;
 
     $validations = validate($parsedObject);
-    if (!empty($validations)) {
-        sendJsonResponse($validations, 400);
-    } else {
-        sendJsonResponse($priceOffer, 200);
-    }
+    sendJsonResponse($validations, 200);
 }
 
 // ---------------------

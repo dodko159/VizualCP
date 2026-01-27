@@ -4,12 +4,12 @@ export interface SpecialAccessoriesResponse extends HintInterface {
     id: string
     calculatedPrice: number
     configuredPrice: number | null
-    count: number
-    header: string
-    hint: string
-    imgSrc: string
-    label: string
-    selectedPrice: number
-    youtubeVideoCode: string
+    count: number | null
+    header: string | null
+    hint: string | null
+    imgSrc: string | null
+    label: string | null
+    selectedPrice: number | null
+    youtubeVideoCode: string | null
     videoSrc: string | null
 }

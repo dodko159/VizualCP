@@ -113,6 +113,7 @@ window.jQuery(document).ready(function(){
                     .done(function (response) {
                         if (isSuccess(response)) {
                             pridajElement(response);
+                            alert('Dvere boli pridané do ponuky.')
                         } else {
                             console.log(json['message']);
                             // hodi error

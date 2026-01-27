@@ -1,7 +1,7 @@
 export interface AddressResponse {
-    city: string
-    district: string
-    street: string
-    streetNumber: string
-    zipCode: string
+    city: string | null
+    district: string | null
+    street: string | null
+    streetNumber: string | null
+    zipCode: string | null
 }

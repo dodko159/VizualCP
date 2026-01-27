@@ -11,17 +11,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $requestBody = json_decode($rawData, true);
 
     if (!AppConfigJsonDataManipulation::getAll()["reCaptchaEnabled"] || verifyRecaptcha($requestBody["g-recaptcha-response"])) {
-        /** @var PriceOfferResponse $priceOffer */
-        $priceOffer = $_SESSION["priceOffer"]->toResponse();
-        $spreadsheet = generateSpreadSheet($priceOffer);
-
         try {
+            $priceOffer = PriceOffer::fromSession($_SESSION["priceOffer"])->toResponse();
+            $spreadsheet = generateSpreadSheet($priceOffer);
+
             sendMailWithExcelAttachment($spreadsheet, $priceOffer);
-        } catch (Exception $e) {
+            sendJsonResponse(array(), 200);
+        } catch (Throwable $e) {
             sendJsonResponse(["error" => "ERROR_SENDING_MAIL"], 500);
         }
-
-        sendJsonResponse(array(), 200);
     } else {
         sendJsonResponse(["error" => "RECAPTCHA_FAILED"], 400);
     }

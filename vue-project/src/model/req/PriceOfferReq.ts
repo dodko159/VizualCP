@@ -7,6 +7,7 @@ import {SpecialAccessoriesReq} from "./SpecialAccessoriesReq.js";
 import {PossibleAdditionalChargeReq} from "./PossibleAdditionalChargeReq.js";
 import {SpecialSurchargeReq} from "./SpecialSurchargeReq.js";
 import {LineItemReq} from "./LineItemReq.js";
+import {SelectedDoorLineItemRequest} from "./SelectedDoorLineItemRequest.js";
 
 export interface PriceOfferReq {
     address: AddressReq
@@ -21,6 +22,7 @@ export interface PriceOfferReq {
     possibleAdditionalChargesLineItems: LineItemReq[]
     rosettes: RosetteReq[]
     rosettesLineItems: LineItemReq[]
+    selectedDoorsLineItems: SelectedDoorLineItemRequest[]
     specialAccessories: SpecialAccessoriesReq[]
     specialAccessoriesLineItems: LineItemReq[]
     specialSurcharges: SpecialSurchargeReq[]

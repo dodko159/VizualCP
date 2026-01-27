@@ -1,5 +1,5 @@
 import {ApiResponse} from "../res/ApiResponse.js";
-import {DoorResponse} from "../res/DoorResponse.js";
+import {SelectedDoorResponse} from "../res/SelectedDoorResponse.js";
 import {HandleResponse} from "../res/HandleResponse.js";
 import {AddressResponse} from "../res/AddressResponse.js";
 import {ContactResponse} from "../res/ContactResponse.js";
@@ -8,6 +8,7 @@ import {SpecialAccessoriesResponse} from "../res/SpecialAccessoriesResponse.js";
 import {SpecialSurchargeResponse} from "../res/SpecialSurchargeResponse.js";
 import {PossibleAdditionalChargeResponse} from "../res/PossibleAdditionalChargeResponse.js";
 import {LineItemResponse} from "../res/LineItemResponse.js";
+import {SelectedDoorLineItemResponse} from "../res/SelectedDoorLineItemResponse.js";
 
 interface FormContact {
     email: string
@@ -36,6 +37,7 @@ export interface FormPriceOffer {
     possibleAdditionalChargesLineItems: FormLineItem[],
     rosettes: FormRosette[],
     rosettesLineItems: FormLineItem[],
+    selectedDoorsLineItems: FormSelectedDoorLineItem[],
     specialAccessories: FormSpecialAccessory[],
     specialAccessoriesLineItems: FormLineItem[],
     specialSurcharges: FormSpecialSurcharge[],
@@ -63,6 +65,13 @@ export interface FormLineItem {
 export interface FormRosette {
     id: string
     count: number
+}
+
+export interface FormSelectedDoorLineItem {
+    isDoorFrameEnabled: boolean
+    name: string
+    price: number
+    width: string
 }
 
 export interface FormSpecialAccessory {
@@ -98,6 +107,7 @@ export function constructReactiveFormPriceOffer(json: ApiResponse | undefined): 
         possibleAdditionalChargesLineItems: json?.priceOffer.possibleAdditionalChargesLineItems.map(it => constructReactiveFormLineItem(it)) || [],
         rosettes: constructReactiveFormRosettes(json?.priceOffer.rosettes || []),
         rosettesLineItems: json?.priceOffer.rosettesLineItems.map(it => constructReactiveFormLineItem(it)) || [],
+        selectedDoorsLineItems: constructReactiveSelectedDoorsLineItems(json?.priceOffer?.selectedDoorsLineItems ?? []),
         specialAccessories: constructReactiveSpecialAccessories(json?.priceOffer.specialAccessories || []),
         specialAccessoriesLineItems: json?.priceOffer.specialAccessoriesLineItems.map(it => constructReactiveFormLineItem(it)) || [],
         specialSurcharges: constructReactiveSpecialSurcharges(json?.priceOffer.specialSurcharges || []),
@@ -123,9 +133,9 @@ export function constructReactiveFormAddress(address: AddressResponse | undefine
     }
 }
 
-export function constructReactiveFormDoors(doors: Record<string, DoorResponse>): Record<string, FormDoor> {
+export function constructReactiveFormDoors(doors: Record<string, SelectedDoorResponse>): Record<string, FormDoor> {
     const reduceDoors: any = {}
-    for (const [key, value] of Object.entries(doors) as [string, DoorResponse][]) {
+    for (const [key, value] of Object.entries(doors) as [string, SelectedDoorResponse][]) {
         reduceDoors[key] = {
             doorWidth: value.width,
             isDtdSelected: value.isDtdSelected,
@@ -156,8 +166,8 @@ export function constructReactiveFormPossibleAdditionalCharges(charges: Possible
     return charges.map(it => {
         return {
             id: it.id,
-            count: it.count,
-            isCountDirty: it.isCountDirty
+            count: it.count ?? 0,
+            isCountDirty: it.isCountDirty ?? false
         }
     })
 }
@@ -166,7 +176,7 @@ export function constructReactiveFormRosettes(rosettes: RosetteResponse[]): Form
     return rosettes.map(rosette => {
         return {
             id: rosette.id,
-            count: rosette.count
+            count: rosette.count ?? 0
         }
     })
 }
@@ -175,8 +185,8 @@ export function constructReactiveSpecialAccessories(specialAccessories: SpecialA
     return specialAccessories.map(specialAccessory => {
         return {
             id: specialAccessory.id,
-            count: specialAccessory.count,
-            selectedPrice: specialAccessory.selectedPrice
+            count: specialAccessory.count ?? 0,
+            selectedPrice: specialAccessory.selectedPrice ?? 0.0
         }
     })
 }
@@ -185,9 +195,20 @@ export function constructReactiveSpecialSurcharges(specialSurcharges: SpecialSur
     return specialSurcharges.map(specialSurcharge => {
         return {
             id: specialSurcharge.id,
-            count: specialSurcharge.count,
-            isAssemblySelected: specialSurcharge.isAssemblySelected,
-            isAssemblySelectedDirty: specialSurcharge.isAssemblySelectedDirty
+            count: specialSurcharge.count ?? 0,
+            isAssemblySelected: specialSurcharge.isAssemblySelected ?? false,
+            isAssemblySelectedDirty: specialSurcharge.isAssemblySelectedDirty ?? false
+        }
+    })
+}
+
+export function constructReactiveSelectedDoorsLineItems(selectedDoorsLineItems: SelectedDoorLineItemResponse[]): FormSelectedDoorLineItem[] {
+    return selectedDoorsLineItems.map(it => {
+        return {
+            isDoorFrameEnabled: it.isDoorFrameEnabled ?? false,
+            name: it.name ?? "",
+            price: it.price ?? 0,
+            width: it.width ?? ""
         }
     })
 }

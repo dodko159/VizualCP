@@ -1,17 +1,17 @@
 {
-    "0":{
-        "image":"./images/interierove-dvere-cena.jpg",
-        "title":"Interiérové <b>dvere so zárubňou</b> od <b>179,- €</b>",
-        "text":"Interiérové dvere a zárubne Vám vo všetkých druhoch laminátov ponúkame za akciovú cenu 179€. Cena platí aj pre dvere, ktoré prídeme pred výrobou osobne zamerať."
-    },
-    "1":{
-        "image":"./images/zameranie-zadarmo.jpg",
-        "title":"<b>Zameranie</b> stavebných otvorov <b>zadarmo</b>",
-        "text":"Trápia Vás atypické miery otvorov? Pre nás nie sú žiadnym problémom. Každý otvor osobne zameriame a dvere vyrobíme tak, aby čo najpresnejšie zapasovali. Dvere na mieru sú u nás BEZ PRÍPLATKU."
-    },
-    "2":{
-        "image":"./images/montaz-dveri.jpg",
-        "title":"<b>Montáž</b> inte&shy;rié&shy;ro&shy;vých dverí a zárubne <b>25,- €</b>",
-        "text":"Montáž kompletu interiérové dvere so zárubňou Vám ponúkame za zvýhodnenú cenu od 25€/ks. Táto akciová cena platí pri montáži šiestich a viac kusov dverí a zárubní."
-    }
+  "0": {
+    "image": "./images/interierove-dvere-cena.jpg",
+    "title": "Interiérové <b>dvere so zárubňou</b> od <b>219,- €</b>",
+    "text": "Interiérové dvere a zárubne Vám vo všetkých druhoch laminátov ponúkame za akciovú cenu 219€. Cena platí aj pre dvere, ktoré prídeme pred výrobou osobne zamerať."
+  },
+  "1": {
+    "image": "./images/zameranie-zadarmo.jpg",
+    "title": "<b>Zameranie</b> stavebných otvorov <b>zadarmo</b>",
+    "text": "Trápia Vás atypické miery otvorov? Pre nás nie sú žiadnym problémom. Každý otvor osobne zameriame a dvere vyrobíme tak, aby čo najpresnejšie zapasovali. Dvere na mieru sú u nás BEZ PRÍPLATKU."
+  },
+  "2": {
+    "image": "./images/montaz-dveri.jpg",
+    "title": "<b>Montáž</b> inte&shy;rié&shy;ro&shy;vých dverí a zárubne <b>35,- €</b>",
+    "text": "Montáž kompletu interiérové dvere so zárubňou Vám ponúkame za zvýhodnenú cenu od 35€/ks. Táto akciová cena platí pri montáži šiestich a viac kusov dverí a zárubní."
+  }
 }

@@ -10,7 +10,7 @@
     "contact": "Kontaktné údaje"
   },
   "assemblyDoors": {
-    "note": "Akciová montáž dverí so zárubňou 25 € / kus. Akcia platí pri počte 6 a viac kusov. Minimálna suma na dvoch montážnikov je 150 €."
+    "note": "Akciová montáž dverí so zárubňou 35 € / kus. Akcia platí pri počte 6 a viac kusov. Minimálna suma na dvoch montážnikov je 210 €."
   },
   "contact": {
     "email": "Email",
@@ -28,8 +28,9 @@
     "zipCode": "PSČ"
   },
   "doors": {
-    "doorWidth": "Vyberte šírku",
+    "doorWidth": "Šírka",
     "isDoorFrameEnabled": "Zárubňa",
+    "name": "Názov",
     "notSelected": "Neboli zvolené žiadne dvere.",
     "remove": "Vymazať"
   },
@@ -55,6 +56,7 @@
     }
   },
   "alerts": {
+    "FORM_SAVE_ERROR": "Nastala chyba pri ukladaní formuláru. Pri pretrvávajúcich problémov kontaktujte administrátora.",
     "FORM_VALIDATIONS_ERROR": "Vo formulári sa nachádzajú chybné polia.",
     "MAIL_SENDING_ERROR": "Nastala chyba pri posielaní emailu."
   }

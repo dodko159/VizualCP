@@ -1,5 +1,6 @@
 <?php
 include_once 'json-data-manipulation.php';
+include_once 'cart-model.php';
 
 require 'vendor/autoload.php';
 
@@ -12,13 +13,16 @@ use PhpOffice\PhpSpreadsheet\Worksheet\Worksheet;
 
 function generateSpreadSheet(PriceOfferResponse $priceOffer): string
 {
-    $spreadsheet = loadSpreadSheet('assets/xlsx/cenova_ponuka_Hutas_04012026.xlsx');
+    $spreadsheet = loadSpreadSheet('assets/xlsx/cenova_ponuka_Hutas_21012026.xlsx');
     addBusinessDataIntoSpreadsheet($spreadsheet, $priceOffer);
     return writeSpreadSheetToOutput($spreadsheet);
 }
 
 function addBusinessDataIntoSpreadsheet(Spreadsheet $spreadsheet, PriceOfferResponse $priceOffer): void
 {
+    $sheetNameCalculations = 'cena_dvere';
+    $priceFrame = FEE_FRAME;
+    $priceFrameOffer = Door::FEE_FRAME_OFFER;
     $rowIdx = 1;
 
     /*** Contact ***/
@@ -50,10 +54,13 @@ function addBusinessDataIntoSpreadsheet(Spreadsheet $spreadsheet, PriceOfferResp
 
     /*** Doors ***/
     $doors = $priceOffer->doors;
+    $selectedDoorsLineItems = $priceOffer->selectedDoorsLineItems;
     $rowIdx = $rowIdx + 2;
 
     $doorsCount = count($doors);
-    $rowCountToInsert = $doorsCount > 9 ? $doorsCount - 9 : 0;
+    $selectedDoorsLineItemsCount = count($selectedDoorsLineItems);
+    $totalDoors = $doorsCount + $selectedDoorsLineItemsCount;
+    $rowCountToInsert = max(0, $totalDoors - 9);
 
     if ($rowCountToInsert > 0) {
         $sheet->insertNewRowBefore(16, $rowCountToInsert);
@@ -63,13 +70,23 @@ function addBusinessDataIntoSpreadsheet(Spreadsheet $spreadsheet, PriceOfferResp
         $sheet->setCellValue("A$rowIdx", Width::getWidthString($door->width) ?: 60);
         $sheet->setCellValue("B$rowIdx", $door->type);
         $sheet->setCellValue("C$rowIdx", $door->material ? DoorsJsonDataManipulation::getMaterialTranslation($door->material) : "");
-        $sheet->setCellValue("E$rowIdx", "=IFERROR(VLOOKUP(B$rowIdx, Calc!A:B, 2, FALSE), 0)+IF(A$rowIdx<=69, 0,IF(A$rowIdx<=79, 3,IF(A$rowIdx<=89, 6, 9)))");
+        $sheet->setCellValue("E$rowIdx", "=IFERROR(VLOOKUP(B$rowIdx, $sheetNameCalculations!A:B, 2, FALSE), 0)+IF(A$rowIdx<=69, 0,IF(A$rowIdx<=79, 3,IF(A$rowIdx<=89, 6, 9)))");
         $sheet->setCellValue("F$rowIdx", $door->isDoorFrameEnabled ? 'TRUE' : 'FALSE');
         $sheet->setCellValue("G$rowIdx", 1);
         $sheet->setCellValue(
             "H$rowIdx",
-            "=IF(ISBLANK(B$rowIdx),0, G$rowIdx*E$rowIdx+IF(F$rowIdx, IF(B$rowIdx=\"v1\", 79, 93), 0))"
+            "=IF(ISBLANK(B$rowIdx),0, G$rowIdx*E$rowIdx+IF(F$rowIdx, IF(B$rowIdx=\"v1\", $priceFrameOffer, $priceFrame), 0))"
         );
+        $rowIdx = $rowIdx + 1;
+    }
+
+    foreach ($selectedDoorsLineItems as $door) {
+        $sheet->setCellValue("A$rowIdx", Width::getWidthString($door->width) ?: 60);
+        $sheet->setCellValue("B$rowIdx", $door->name);
+        $sheet->setCellValue("E$rowIdx", $door->price);
+        $sheet->setCellValue("F$rowIdx", $door->isDoorFrameEnabled ? 'TRUE' : 'FALSE');
+        $sheet->setCellValue("G$rowIdx", 1);
+        $sheet->setCellValue("H$rowIdx", $door->calculatedPrice);
         $rowIdx = $rowIdx + 1;
     }
 
@@ -228,9 +245,9 @@ function getFormattedAddress(AddressResponse $address): string
 }
 
 function insertLineItems(
-    array $lineItems,
+    array     $lineItems,
     Worksheet $sheet,
-    int $rowIdx
+    int       $rowIdx
 ): int
 {
     $lineItemsCount = count($lineItems);
@@ -269,4 +286,5 @@ function insertLineItems(
 
     return $rowCountToInsert;
 }
+
 ?>

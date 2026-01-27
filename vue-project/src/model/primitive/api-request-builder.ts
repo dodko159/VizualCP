@@ -1,4 +1,4 @@
-import {FormLineItem, FormPriceOffer} from "./form-builder.js";
+import {FormLineItem, FormPriceOffer, FormSelectedDoorLineItem} from "./form-builder.js";
 import {ApiResponse} from "../res/ApiResponse.js";
 import {ApiRequest} from "../req/ApiRequest.js";
 import {DoorReq} from "../req/DoorReq.js";
@@ -7,6 +7,7 @@ import {SpecialAccessoriesReq} from "../req/SpecialAccessoriesReq.js";
 import {PossibleAdditionalChargeReq} from "../req/PossibleAdditionalChargeReq.js";
 import {SpecialSurchargeReq} from "../req/SpecialSurchargeReq.js";
 import {LineItemReq} from "../req/LineItemReq.js";
+import {SelectedDoorLineItemRequest} from "../req/SelectedDoorLineItemRequest.js";
 
 export function prepareRequest(
     reactiveForm: FormPriceOffer,
@@ -19,11 +20,11 @@ export function prepareRequest(
     const doors: Record<string, DoorReq> = (Object.entries(reactiveForm.doors) as [string, Record<string, any>][]).reduce(
         (acc, [key, value]) => {
             acc[key] = {
-                category: apiResponse.priceOffer.doors[key].category,
+                category: apiResponse.priceOffer.doors[key].category!,
                 isDoorFrameEnabled: value.isDoorFrameEnabled,
                 isDtdSelected: value.isDtdSelected,
-                material: apiResponse.priceOffer.doors[key].material,
-                type: apiResponse.priceOffer.doors[key].type,
+                material: apiResponse.priceOffer.doors[key].material!,
+                type: apiResponse.priceOffer.doors[key].type!,
                 width: value.doorWidth
             };
             return acc;
@@ -49,6 +50,7 @@ export function prepareRequest(
 
     const rosettesLineItems: LineItemReq[] = reactiveForm.rosettesLineItems.map(it => mapLineItem(it));
 
+    const selectedDoorsLineItems: SelectedDoorLineItemRequest[] = reactiveForm.selectedDoorsLineItems.map(it => mapSelectedDoorLineItem(it));
     const specialAccessories: SpecialAccessoriesReq[] = reactiveForm.specialAccessories.map(it => {
         return {
             id: it.id,
@@ -96,6 +98,7 @@ export function prepareRequest(
             possibleAdditionalChargesLineItems: possibleAdditionalChargesLineItems,
             rosettes: rosettes,
             rosettesLineItems: rosettesLineItems,
+            selectedDoorsLineItems: selectedDoorsLineItems,
             specialAccessories: specialAccessories,
             specialAccessoriesLineItems: specialAccessoriesLineItems,
             specialSurcharges: specialSurcharges,
@@ -109,5 +112,14 @@ function mapLineItem(it: FormLineItem): LineItemReq {
         name: it.name,
         price: it.price || 0,
         count: it.count || 0
+    }
+}
+
+function mapSelectedDoorLineItem(it: FormSelectedDoorLineItem): SelectedDoorLineItemRequest {
+    return {
+        isDoorFrameEnabled: it.isDoorFrameEnabled,
+        name: it.name,
+        price: it.price,
+        width: it.width
     }
 }

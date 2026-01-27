@@ -1,6 +1,6 @@
 export interface HintInterface {
-    header: string
-    hint: string
+    header: string | null
+    hint: string | null
     imgSrc: string | null
     youtubeVideoCode: string | null
     videoSrc: string | null

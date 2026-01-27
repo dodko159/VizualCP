@@ -1,5 +1,5 @@
 export interface ContactResponse {
-    email: string
-    fullName: string
-    phoneNumber: string
+    email: string | null
+    fullName: string | null
+    phoneNumber: string | null
 }

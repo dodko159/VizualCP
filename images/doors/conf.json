@@ -1,62 +1,68 @@
 {
-    "1":{
-        "name":"Najpre&shy;dá&shy;va&shy;nejšie",
-        "type":"v1",
-        "material": 10,
-        "wien": 0
-    },
-    "7":{
-        "name":"Alica",
-        "type":"a12",
-        "material": 11,
-        "wien": 0
-    },
-    "4":{
-        "name":"Kristina",
-        "type":"k8",
-        "material": 9,
-        "wien": 0
-    },
-    "2":{
-        "name":"Renata",
-        "type":"r5",
-        "material": 14,
-        "wien": 0
-    },
-    "5":{
-        "name":"Petra",
-        "type":"p10",
-        "material": 9,
-        "wien": 0
-    },
-    "3":{
-        "name":"Vanesa",
-        "type":"v3",
-        "material": 4,
-        "wien": 0
-    },
-    "6":{
-        "name":"Zuzana",
-        "type":"z3",
-        "material": 12,
-        "wien": 0
-    },
-    "8":{
-        "name":"Wien 1",
-        "type":"W1_L2_K2_O1",
-        "material": 1,
-        "wien": 1
-    },
-    "9":{
-        "name":"Wien 2",
-        "type":"W2_L2_K2_O1",
-        "material": 1,
-        "wien": 1
-    },
-    "10":{
-        "name":"Wien 3",
-        "type":"W3_L2_K2_O1",
-        "material": 1,
-        "wien": 1
-    }
+  "1": {
+    "name": "Najpre&shy;dá&shy;va&shy;nejšie",
+    "type": "v1",
+    "material": 10,
+    "wien": 0
+  },
+  "4": {
+    "name": "Kristina",
+    "type": "k8",
+    "material": 9,
+    "wien": 0
+  },
+  "2": {
+    "name": "Renata",
+    "type": "r5",
+    "material": 14,
+    "wien": 0
+  },
+  "5": {
+    "name": "Petra",
+    "type": "p10",
+    "material": 9,
+    "wien": 0
+  },
+  "3": {
+    "name": "Vanesa",
+    "type": "v3",
+    "material": 4,
+    "wien": 0
+  },
+  "6": {
+    "name": "Zuzana",
+    "type": "z3",
+    "material": 17,
+    "wien": 0
+  },
+  "8": {
+    "name": "Wien 1",
+    "type": "W1_L2_K2_O1",
+    "material": 1,
+    "wien": 1
+  },
+  "9": {
+    "name": "Wien 2",
+    "type": "W2_L2_K2_O1",
+    "material": 1,
+    "wien": 1
+  },
+  "10": {
+    "name": "Wien 3",
+    "type": "W3_L2_K2_O1",
+    "material": 1,
+    "wien": 1
+  },
+  "11": {
+    "name": "Barbora",
+    "type": "b1",
+    "material": 11,
+    "wien": 0
+  },
+  "12": {
+    "name": "Gréta",
+    "type": "g1",
+    "material": 20,
+    "wien": 0
+  }
 }

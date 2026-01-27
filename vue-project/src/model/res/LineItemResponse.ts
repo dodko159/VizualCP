@@ -1,6 +1,6 @@
 export interface LineItemResponse {
     calculatedPrice: number
-    count: number
-    name: string
-    price: number
+    count: number | null
+    name: string | null
+    price: number | null
 }
